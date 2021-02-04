@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://tomokazu518.github.io/public/for-students/</loc>
+    <lastmod>2021-02-04T23:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tomokazu518.github.io/public/</loc>
+    <lastmod>2021-02-04T23:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tomokazu518.github.io/public/for-students/report/</loc>
+    <lastmod>2021-02-04T23:27:40+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tomokazu518.github.io/public/pc-tips/</loc>
+    <lastmod>2021-02-04T10:48:21+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tomokazu518.github.io/public/PC-Tips/wsl/</loc>
+    <lastmod>2021-02-04T10:48:21+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tomokazu518.github.io/public/PC-Tips/stat/</loc>
+    <lastmod>2021-02-04T09:54:06+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tomokazu518.github.io/public/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://tomokazu518.github.io/public/tags/</loc>
+  </url>
+  
+</urlset>

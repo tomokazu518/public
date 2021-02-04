@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PC  Tips on Tomokazu NOMURA</title>
+    <link>http://tomokazu518.github.io/public/pc-tips/</link>
+    <description>Recent content in PC  Tips on Tomokazu NOMURA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <lastBuildDate>Thu, 04 Feb 2021 10:48:21 +0900</lastBuildDate>
+    
+	<atom:link href="http://tomokazu518.github.io/public/pc-tips/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WSL(Windows Subsystem for Linux) 2 導入メモ</title>
+      <link>http://tomokazu518.github.io/public/PC-Tips/wsl/</link>
+      <pubDate>Thu, 04 Feb 2021 10:48:21 +0900</pubDate>
+      
+      <guid>http://tomokazu518.github.io/public/PC-Tips/wsl/</guid>
+      <description>WSL2のメリット WSL2のインストール Tex Live  インストール  aptコマンド Tex Liveのインストーラを使う   Windowsからの使い方   Pandoc  aptコマンド 最新版のインストール Pandoc-crossrefのインストール   RとRStudio  R本体のインストール RStudio Serverのインストール RStudio ServerでTex Liveを使う       WSL2のメリット  LinuxにはWindowsにはない便利なツールがある LatexなどはWindowsよりもLinuxの方が速いし安定している WSLはWindows上で動作するLinux環境 メインマシンはLinuxにしようってほどは尖ってないが，Linuxのツールは使いたいという場合にはWSL2が便利  WSL2のインストール 基本的には，マイクロソフトのページを見ながらやればできるが，以下に要点だけ示す。
+  BIOSで仮想化支援機能を有効にする
+ 有効になっているかどうかはVirtualCheckerで確認できる(最初から有効になっている場合もある) BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目    Windowsを1903以上のバージョンに更新する
+ Windows Updateで自動的に更新されていれば問題ない 自動更新が行われない場合は，Windows更新ツールを使う    (PowerShell管理者で)Linux用Windowsサブシステムを有効にする
+  dism.</description>
+    </item>
+    
+    <item>
+      <title>統計分析ソフトについてのメモ</title>
+      <link>http://tomokazu518.github.io/public/PC-Tips/stat/</link>
+      <pubDate>Thu, 04 Feb 2021 09:54:06 +0900</pubDate>
+      
+      <guid>http://tomokazu518.github.io/public/PC-Tips/stat/</guid>
+      <description>  統計データを分析するためには，ソフトウェアが必要
+ 統計分析のための専門的なソフトウェアを使えることは，今後の社会において求められる重要なスキル 統計分析のためのソフトウェアには，有償・無償ともにさまざまなものがある    Excelとの違い
+ 機能  Excelは統計を分析するためのソフトウェアではないのでできることが限られている 統計分析ソフトではさまざまな手法を簡単に実行可能   再現性  Excelによる分析は，再現性を担保するのが難しい(Excelファイルを見てもデータの加工や分析の過程がわからない) 統計分析ソフトはコード(プログラム)を見れ分析の過程が明らか      無償の統計分析ソフト gretl gretlは，GUIで操作できるため，初心者でもわかりやすくて使いやすい。よく使われる計量モデルは一通り推定可能。グラフはgnuplotというメジャーなグラフ描画ソフトが組み込まれている。ただし，できることは限られているので，本格的に学びたいのであればRの方がおすすめ。ドキュメント類は英語だが，メニューなどは日本語化されている。
+使い方を解説した書籍やウェブページもいくつかあるが，「日本の人事を科学する」gretlテキストがわかりやすい。
+R Rは最もよく利用されている統計分析の専用ソフト(だと思う)。非常に多くのパッケージが開発されており，ほぼ何でもできる。RStudioを使うことで，非常に使いやすく強力な分析環境を整えることができる。
+RおよびRStudioのインストール方法については，高知工科大学の矢内勇生先生のページで非常に丁寧に解説されている。
+Rの使い方については，Rによる計量政治学がおすすめ。実際にRを操作しながら学んでいくことができる。
+インターネットで読めるものとしては，以下のページがわかりやすい。
+ 森知晴先生(立命館大学)の卒業論文のためのR入門 土居翔平先生(北海道大学)のRで計量政治学入門  </description>
+    </item>
+    
+  </channel>
+</rss>
