@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="For students">
+<meta name="description" content="BeamerスライドをMarkdownで簡単に作成">
 
-<title>For students | Tomokazu NOMURA</title>
+<title>BeamerスライドをMarkdownで簡単に作成 | Tomokazu NOMURA</title>
 
 <link rel="icon" href="/public/favicon/favicon-32x32.png" type="image/x-icon">
 
@@ -31,7 +31,6 @@
 <link rel="preload" href="/public/custom.css" as="style">
 <link rel="stylesheet" href="/public/custom.css" media="all">
 
-<link rel="alternate" type="application/rss+xml" href="http://tomokazu518.github.io/public/for-students/index.xml" title="Tomokazu NOMURA" />
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
 
 </head>
@@ -197,7 +196,7 @@
             
             
                 <span class="flex">
-                    <a href="/public/PC-Tips/beamer/" class="gdoc-nav__entry ">
+                    <a href="/public/PC-Tips/beamer/" class="gdoc-nav__entry is-active">
                         BeamerスライドをMarkdownで簡単に作成
                     </a>
                 </span>
@@ -310,7 +309,14 @@
         
     
     
-        <a href='/public/'>Tomokazu NOMURA's Web Page</a> / For students
+        
+        
+        
+    
+    
+        <a href='/public/'>Tomokazu NOMURA's Web Page</a> / <a href='/public/pc-tips/'>PC  Tips</a> / BeamerスライドをMarkdownで簡単に作成
+    
+
     
 
     
@@ -323,8 +329,9 @@
     </span>
 </div>
 
+
     <article class="gdoc-markdown">
-        <h1>For students</h1>
+        <h1>BeamerスライドをMarkdownで簡単に作成</h1>
         
 
 
@@ -333,6 +340,187 @@
 
 
 
+
+
+  <div class="gdoc-toc gdoc-toc__level--6"><nav id="TableOfContents"><ul>
+        <li><a href="#はじめに">はじめに</a></li>
+        <li><a href="#markdownとは">Markdownとは</a>
+          <ul>
+            <li><a href="#markdownの書き方例">Markdownの書き方例</a></li>
+          </ul>
+        </li>
+        <li><a href="#準備">準備</a></li>
+        <li><a href="#markdownファイルの作成">Markdownファイルの作成</a>
+          <ul>
+            <li><a href="#markdownファイルの作成例">Markdownファイルの作成例</a></li>
+            <li><a href="#pandocで変換">Pandocで変換</a></li>
+          </ul>
+        </li>
+      </ul></nav><hr></div>
+
+
+<div class="gdoc-page__anchorwrap"><h2 id="はじめに">はじめに<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/beamer/#はじめに" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor はじめに" href="#はじめに"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>Beamerのスライドはかっこいいので，それを見てLatexを使いたいと思った人も多いはず。しかし，Latexを覚えるのは大変だし，いろいろコマンドが入り混じったソースコードは可読性が低い。</p>
+<p>そこで，Markdownという非常にシンプルな記法で内容を記述し，Pandocというソフトを使ってBeamerに変換する方法を紹介する。ゼミのプレゼンなどで試してみてほしい。</p>
+<p>PowerPointで作成するよりも軽快で内容に集中できることと，MarkdownはテキストデータなのでGitでバージョン管理できることなどがメリット。裏返せば，変換するまでスライドの仕上がりを確認できないことと，コンテンツを柔軟に配置することはできない点はデメリット。</p>
+<p>以下わたしはWSL2のUbuntuを使っているので，Windows版のPandocは未検証。そのうち，時間ができたらちゃんと検証して，もう少し丁寧に説明したい。</p>
+<div class="gdoc-page__anchorwrap"><h2 id="markdownとは">Markdownとは<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/beamer/#markdownとは" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Markdownとは" href="#markdownとは"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>Markdownは，文書を書くための記法の一つ。テキスト・エディタで作成する。文書の構造(章や節の見出し)や，箇条書き，文字列の強調などをシンプルな記法で表現することができ，htmlやword形式，Latexなどに変換することができる。</p>
+<p>Markdownの書き方は非常に簡単。まずは，以下だけ覚えれば十分。</p>
+<ul>
+<li>#がレベル1の見出し，##がレベル2の見出しといったように行頭に＃をつけるとその行が節や章の見出しとなる</li>
+<li>段落は，間に一行空行を入れることで表現</li>
+<li>数式は&quot;$&quot;で囲ってTeX形式で書く(インラインの場合は$1個，別行立ての場合は$2個)</li>
+<li>箇条書きは，項目の頭に&rdquo;- &ldquo;をつける</li>
+<li>番号付き箇条書きは，項目の頭に”1. &ldquo;をつける(番号はすべて1.にしておけば自動で振ってくれる</li>
+<li>強調する文字列は&rdquo;**&ldquo;で囲む，イタリックにしたい文字は&rdquo;*&ldquo;で囲む</li>
+</ul>
+<div class="gdoc-page__anchorwrap"><h3 id="markdownの書き方例">Markdownの書き方例<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/beamer/#markdownの書き方例" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Markdownの書き方例" href="#markdownの書き方例"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<pre><code>
+---
+title: Markdownの書き方例 
+---
+
+# はじめに(レベル1の見出し)
+
+## はじめの一歩(レベル2の見出し)
+
+- 箇条書き1
+- 箇条書き2
+
+## 次の一歩(レベル2の見出し)
+
+1. 番号付き箇条書きは，1.をつける
+1. すべて1.にしておく
+1. 自動で番号を振ってくれる
+
+# 文章を書く(レベル1の見出し)
+
+内容はテキスト・エディタなどで作成する。メモ帳でも十分だが，Markdown専用のエディタもいろいろあるので，使いやすいものを選ぼう。
+
+段落を区切るときには，改行してさらに一行空行を挿入する。段落のはじめに一文字空ける必要はない(wordやPDFに変換するときに自動でフォーマットされる)。
+
+文字列の**強調**，*斜体*は，”*&quot;で囲むことで表現できる。数式は，
+
+$$\log (1+x) \approx x$$
+
+インライン数式は，$\log (1+x) \approx x$のように&quot;$&quot;で囲む。
+
+</code></pre><p>以上の例の.mdファイル(Markdown)，.変換したhtmlファイルは<a href="https://u.pcloud.link/publink/show?code=XZjbDhXZ7af0yyuIs5V6BVE29Vxg2hmxOj4X">こちら</a>のなかのsample1.md，sample1.html。cssを使えば見栄えはもっと良くなる。</p>
+<p>変換コマンドは以下。</p>
+<pre><code>pandoc sample1.md --tempalte=default.html -o sample1.html&quot;
+</code></pre><div class="gdoc-page__anchorwrap"><h2 id="準備">準備<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/beamer/#準備" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 準備" href="#準備"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>MarkdownからBeamerプレゼンテーションのPDFを作成するために必要なものは以下。</p>
+<ul>
+<li>Markdownを書くためのエディタ
+<ul>
+<li>メモ帳でも書くことはできる</li>
+<li>おすすめは「秀丸」→簡単にマクロが作成できるので，編集中のMarkdownをボタン一つで変換みたいなことがすぐにできる</li>
+<li>Visual Studio CodeとかAtomも結構良い</li>
+</ul>
+</li>
+<li>Pandoc
+<ul>
+<li>無料の文書形式変換ソフト→Markdownからだとhtmlやword，Latexなどいろいろ変換できる</li>
+<li>Windows版は<a href="https://pandoc.org/installing.html">公式ページ</a>からインストーラをダウンロードして実行するだけでOk</li>
+<li>おすすめは，WSL2(Windows Subsystem for Linux 2)上にインストールして使うこと</li>
+</ul>
+</li>
+<li>Tex
+<ul>
+<li>MarkdownをWord形式やhtmlに変換するには不要</li>
+<li>BeamerスライドやLatex経由でPDFを作成するためには必須</li>
+<li>比較的インストールが簡単なのはTex Live→<a href="https://texwiki.texjp.org/?TeX%20Live%2FWindows">TeX Wiki</a>の解説ページを見ながらやればできるはず</li>
+<li>こちらもおすすめはWSL2(Windows Subsystem for Linux 2)上にインストールして使うこと</li>
+</ul>
+</li>
+<li>PDFファイルのビューア
+<ul>
+<li>ほぼSumatra PDF一択→Sumatra PDFは開いているファイルをロックしないので，Pandocで変換するときにファイルを閉じなくても上書きできる</li>
+<li>Sumatra PDFは動作が軽いので，普段使いにもおすすめ</li>
+</ul>
+</li>
+<li>フォント
+<ul>
+<li><a href="https://moji.or.jp/ipafont/">IPAフォント</a>がおすすめ</li>
+</ul>
+</li>
+</ul>
+<div class="gdoc-page__anchorwrap"><h2 id="markdownファイルの作成">Markdownファイルの作成<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/beamer/#markdownファイルの作成" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Markdownファイルの作成" href="#markdownファイルの作成"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>Beamerスライド作るときのポイントは以下。</p>
+<ul>
+<li>スライドタイトルを##(レベル2の見出し)で書く
+<ul>
+<li>レベル2の見出しがあると，そこから新しいスライドが作成される</li>
+<li>スライドタイトルなしで新しいスライドを作成するには，&quot;&mdash;&ldquo;を入れる</li>
+</ul>
+</li>
+<li>テーマとかTeXのプリアンブルに書くような内容は，yamlヘッダの部分に書く</li>
+</ul>
+<div class="gdoc-page__anchorwrap"><h3 id="markdownファイルの作成例">Markdownファイルの作成例<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/beamer/#markdownファイルの作成例" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Markdownファイルの作成例" href="#markdownファイルの作成例"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<p>以下の例の.mdファイル(Markdown)，.bmpファイル(画像)，変換したPDFファイルは<a href="https://u.pcloud.link/publink/show?code=XZjbDhXZ7af0yyuIs5V6BVE29Vxg2hmxOj4X">こちら</a>のなかのsample.md，000.bmp，sample.pdf。</p>
+<pre><code>
+---
+title: &quot;MarkdownからBeamer&quot;
+subtitle: &quot;Pandocで変換&quot;
+author: &quot;A大学　B太郎&quot;
+date: 2021/02/08
+output:
+  beamer_presentation: 
+    keep_tex: yes                 
+    latex_engine: xelatex      
+header-includes: 
+- \usepackage{bookmark}
+- \usepackage{zxjatype}
+- \usepackage[ipa]{zxjafont}  
+- \usetheme{metropolis}
+---
+
+## yamlヘッダの説明
+
+- yamlヘッダのメタ情報
+    - title: プレゼンテーションのタイトル
+    - subtitle: サブタイトル
+    - author: 発表者
+    - date: 日付
+- 出力の設定
+    - keep_tex:  .texファイルを残すならyes(TeXでの微調整用)
+    - latex_engine: コンパイルに使うエンジン(xelatexおすすめ)
+
+
+## TeXのプリアンブル部分の説明
+
+1.  \\usepackage{bookmark}         : PDFにしおりを付ける
+1.  \\usepackage{zxjatype}            : 日本語を使うために必要 
+1.  \\usepackage[ipa]{zxjafont}     : フォントの指定
+1.  \\usetheme{metropolis}           : テーマ，metropolisおすすめ(TeX Liveに最初から入ってる)
+
+---
+
+## そのほか
+
+- インライン数式:，$\log (1+x)=x$
+- 別行立て数式
+$$f(x)=\dfrac{1}{\sqrt{2\pi\sigma}}\exp(-\dfrac{(x-\mu)^ 2}{2\sigma^ 2})$$
+- 表
+
+||a|b|
+|-|-|-|
+|c|0|1|
+|d|1|0|
+
+
+---
+
+- 図
+
+![図のキャプション](000.bmp){width=8cm}
+
+
+</code></pre><div class="gdoc-page__anchorwrap"><h3 id="pandocで変換">Pandocで変換<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/beamer/#pandocで変換" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Pandocで変換" href="#pandocで変換"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<p>コマンドプロンプトかPowershellでサンプルの.mdと画像の入ったフォルダに移動して，以下のコマンドを実行すればPDFができるはず。</p>
+<pre><code>pandoc sample.md  --template=default.latex  --pdf-engine=xelatex  -t beamer  -o sample.pdf 
+</code></pre>
 
     </article>
 
