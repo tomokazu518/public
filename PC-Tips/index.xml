@@ -6,10 +6,23 @@
     <description>Recent content in PC  Tips on Tomokazu NOMURA</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
-    <lastBuildDate>Thu, 04 Feb 2021 10:48:21 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 08 Feb 2021 08:24:13 +0900</lastBuildDate>
     
 	<atom:link href="http://tomokazu518.github.io/public/pc-tips/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>BeamerスライドをMarkdownで簡単に作成</title>
+      <link>http://tomokazu518.github.io/public/PC-Tips/beamer/</link>
+      <pubDate>Mon, 08 Feb 2021 08:24:13 +0900</pubDate>
+      
+      <guid>http://tomokazu518.github.io/public/PC-Tips/beamer/</guid>
+      <description>はじめに Markdownとは  Markdownの書き方例   準備 Markdownファイルの作成  Markdownファイルの作成例       はじめに Beamerのスライドはかっこいいので，それを見てLatexを使いたいと思った人も多いはず。しかし，Latexを覚えるのは大変だし，いろいろコマンドが入り混じったソースコードは可読性が低い。
+そこで，Markdownという非常にシンプルな記法で内容を記述し，Pandocというソフトを使ってBeamerに変換する方法を紹介する。ゼミのプレゼンなどで試してみてほしい。
+Markdownとは Markdownは，文書を書くための記法の一つ。テキスト・エディタで作成する。文書の構造(章や節の見出し)や，箇条書き，文字列の強調などをシンプルな記法で表現することができ，htmlやword形式，Latexなどに変換することができる。
+Markdownの書き方は非常に簡単。まずは，以下だけ覚えれば十分。
+ #がレベル1の見出し，##がレベル2の見出しといったように行頭に＃をつけるとその行が節や章の見出しとなる 段落は，間に一行空行を入れることで表現 数式は&amp;quot;$&amp;quot;で囲ってTeX形式で書く(インラインの場合は$1個，別行立ての場合は$2個) 箇条書きは，項目の頭に&amp;rdquo;- &amp;ldquo;をつける 番号付き箇条書きは，項目の頭に”1. &amp;ldquo;をつける(番号はすべて1.にしておけば自動で振ってくれる 強調する文字列は&amp;rdquo;**&amp;ldquo;で囲む，イタリックにしたい文字は&amp;rdquo;*&amp;ldquo;で囲む  Markdownの書き方例  --- # yamlヘッダ　文書のタイトルなどメタ情報を書く title: Markdownの書き方例 --- # はじめに(レベル1の見出し) ## はじめの一歩(レベル2の見出し) - 箇条書き1 - 箇条書き2 ## 次の一歩(レベル2の見出し) 1. 番号付き箇条書きは，1.をつける 1. すべて1.にしておく 1. 自動で番号を振ってくれる # 文章を書く(レベル1の見出し) 内容はテキスト・エディタなどで作成する。メモ帳でも十分だが，Markdown専用のエディタもいろいろあるので，使いやすいものを選ぼう。 段落を区切るときには，改行してさらに一行空行を挿入する。段落のはじめに一文字空ける必要はない(wordやPDFに変換するときに自動でフォーマットされる)。 文字列の**強調**，*斜体*は，”*&amp;quot;で囲むことで表現できる。数式は， $$\log (1+x) \approx x$$ インライン数式は，$\log (1+x) \approx x$のように&amp;quot;$&amp;quot;で囲む。 このような内容を記述して変換すると，以下のようになる。</description>
+    </item>
     
     <item>
       <title>WSL(Windows Subsystem for Linux) 2 導入メモ</title>
