@@ -7,8 +7,16 @@ h3 {
 h2 {
   position: relative;
   display: inline-block;
+<<<<<<< HEAD
   padding: 0 2em;
   text-align: center;
+=======
+  height: 64px;
+  margin-left: 30px;
+  padding: 0.5em;
+  color: #fff;
+  background: #fa4141;
+>>>>>>> 4caf5fa38c28f6813e8f2d47216be6248c99fa15
 }
 
 h2:before,
