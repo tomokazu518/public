@@ -7,35 +7,27 @@ h3 {
 h2 {
   position: relative;
   display: inline-block;
-<<<<<<< HEAD
-  padding: 0 2em;
+  padding: 0 65px;
   text-align: center;
-=======
-  height: 64px;
-  margin-left: 30px;
-  padding: 0.5em;
-  color: #fff;
-  background: #fa4141;
->>>>>>> 4caf5fa38c28f6813e8f2d47216be6248c99fa15
 }
 
 h2:before,
 h2:after {
-  font-family: 'Font Awesome 5 Free';
-  line-height: 1;
   position: absolute;
-  top: calc(50% - .5em);
-  color: #eb6100;
+  top: calc(50% - 3px);
+  width: 50px;
+  height: 6px;
+  content: '';
+  border-top: solid 2px #000;
+  border-bottom: solid 2px #000;
 }
 
 h2:before {
   left: 0;
-  content: '\f101';
 }
 
 h2:after {
   right: 0;
-  content: '\f100';
 }
 
 h1 {
