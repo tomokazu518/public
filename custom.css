@@ -7,13 +7,9 @@ h3 {
 h2 {
   position: relative;
   display: inline-block;
-<<<<<<< HEAD
-  height: 48px;
-=======
   height: 64px;
->>>>>>> fd1398e752c42522f44f4970a713a27fb1f77b57
   margin-left: 30px;
-  padding: 1rem 2rem 1rem 3rem;
+  padding: 0.5em;
   color: #fff;
   background: #fa4141;
 }
