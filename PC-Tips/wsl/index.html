@@ -353,7 +353,11 @@
                 <li><a href="#tex-liveのインストーラを使う">Tex Liveのインストーラを使う</a></li>
               </ul>
             </li>
-            <li><a href="#windowsからの使い方">Windowsからの使い方</a></li>
+            <li><a href="#windowsからの使い方">Windowsからの使い方</a>
+              <ul>
+                <li><a href="#補足">補足</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
         <li><a href="#pandoc">Pandoc</a>
@@ -455,13 +459,17 @@
 <pre><code>sudo apt install texlive-full
 </code></pre><div class="gdoc-page__anchorwrap"><h4 id="tex-liveのインストーラを使う">Tex Liveのインストーラを使う<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/wsl/#tex-liveのインストーラを使う" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Tex Liveのインストーラを使う" href="#tex-liveのインストーラを使う"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h4></div>
 <ul>
-<li><a href="https://ftp.yz.yamagata-u.ac.jp/pub/CTAN/systems/texlive/Images/">ここ</a>からisoファイルをダウンロードするのが速い気がする(下のアドレスのバージョン番号は適当に読み替える)</li>
+<li>
+<p><a href="https://ftp.yz.yamagata-u.ac.jp/pub/CTAN/systems/texlive/Images/">ここ</a>からisoファイルをダウンロードするのが速い気がする</p>
+</li>
+<li>
+<p>ダウンロードしたisoファイルをWindowsでマウント</p>
+</li>
+<li>
+<p>WindowsのGドライブにマウントしたとすれば，以下のコマンドでUbuntuにもマウントできる</p>
+</li>
 </ul>
-<pre><code>wget https://ftp.yz.yamagata-u.ac.jp/pub/CTAN/systems/texlive/Images/texlive2020-20200406.iso
-</code></pre><ul>
-<li>ダウンロードしたisoファイルをマウント</li>
-</ul>
-<pre><code>sudo mount -o loop ./texlive2020-20200406.iso /mnt
+<pre><code> sudo mount -t drvfs G: /mnt
 </code></pre><ul>
 <li>マウントしたディレクトリに移動</li>
 </ul>
@@ -506,7 +514,22 @@ FNL=${i##*:}
 FNW=$(wslpath -m  ${FNL##*:})
 sed -i -e &quot;s|$FNL|$FNW|&quot; $FILEPATH
 done
-</code></pre><div class="gdoc-page__anchorwrap"><h2 id="pandoc">Pandoc<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/wsl/#pandoc" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Pandoc" href="#pandoc"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+</code></pre><div class="gdoc-page__anchorwrap"><h4 id="補足">補足<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/wsl/#補足" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 補足" href="#補足"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h4></div>
+<ul>
+<li>Windows＋WSL環境でTexのソース(日本語)を書くなら，texmakerがおすすめ
+<ul>
+<li>コンパイラの設定で，すべてのコマンドの前に&quot;ubuntu run &ldquo;を付ければwslにインストールしたTexLiveでコンパイルされる(日本語なのでLatexは&quot;ubuntu run uplatex %.tex&rdquo;，Bib(la)tex&quot;ubuntu run upbibtex %&quot;，Dvipdfmは&quot;ubuntu run dvipdfmx %.dvi&quot;くらい設定すれば十分，Latexmkを使うのもおすすめ)</li>
+</ul>
+</li>
+<li>英語しか書かないならTexStudioが良い感じ(日本語も使えなくはないが，私の環境では変換中の文字列が見えなくなるのであきらめた)</li>
+<li>WSLを使うのであれば，素直に流行を受け入れてVisual Studio Codeを使うのも簡単で良い→VSCodeをWSLに接続すれば，Tex作業がLinux上で完結するので，上のようにWindowsとLinuxでパスの記載が違うといった問題も生じない
+<ul>
+<li>VSCodeはローカルのWSLだけでなく，リモート環境にもSSHで接続できるようになった</li>
+<li>外出先からもVSCodeだけあれば，自宅などのPCにリモートアクセスしてソースの編集やコンパイルなどが可能</li>
+</ul>
+</li>
+</ul>
+<div class="gdoc-page__anchorwrap"><h2 id="pandoc">Pandoc<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/wsl/#pandoc" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Pandoc" href="#pandoc"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <div class="gdoc-page__anchorwrap"><h3 id="aptコマンド-1">aptコマンド<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/wsl/#aptコマンド-1" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor aptコマンド" href="#aptコマンド-1"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <ul>
 <li>バージョンが古くても良ければaptコマンドでインストール可能</li>
@@ -517,11 +540,11 @@ done
 <li>最新版は<a href="https://github.com/jgm/pandoc/releases/">Github</a>から入手可能</li>
 <li>debファイルをダウンロード</li>
 </ul>
-<pre><code>wget https://github.com/jgm/pandoc/releases/download/2.11/pandoc-2.11-1-amd64.deb
+<pre><code>wget https://github.com/jgm/pandoc/releases/download/2.14.0.1/pandoc-2.14.0.1-1-amd64.deb
 </code></pre><ul>
 <li>インストールする</li>
 </ul>
-<pre><code>sudo dpkg -i pandoc-2.11-1-amd64.deb
+<pre><code>sudo apt install ./pandoc-2.14.0.1-1-amd64.deb
 </code></pre><div class="gdoc-page__anchorwrap"><h3 id="pandoc-crossrefのインストール">Pandoc-crossrefのインストール<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/wsl/#pandoc-crossrefのインストール" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Pandoc-crossrefのインストール" href="#pandoc-crossrefのインストール"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <ul>
 <li>
@@ -531,7 +554,7 @@ done
 </ul>
 </li>
 </ul>
-<pre><code>wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.8.2/pandoc-crossref-Linux.tar.xz
+<pre><code>wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.11.0a/pandoc-crossref-Linux.tar.xz
 </code></pre><ul>
 <li>解凍</li>
 </ul>
@@ -550,7 +573,7 @@ done
 <ul>
 <li>最新のRをインストールしたいときは，証明書とレポジトリを追加</li>
 </ul>
-<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+<pre><code>sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 </code></pre><pre><code>sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
 </code></pre><ul>
 <li>RおよびRStudio Serverを使うために必要なパッケージをインストール</li>
