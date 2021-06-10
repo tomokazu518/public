@@ -496,10 +496,10 @@
 <p>Tex StudioやTex Worksなどでコンパイルに用いるコマンドの頭にwslを付ければOk</p>
 </li>
 <li>
-<p>ただし，SynctexはLinuxのパスで書き込まれるので，そのままでは使えない</p>
+<p>ただし，SynctexはLinuxのパスで書き込まれるので，Windows上のエディタでそのまま使うことはできない</p>
 <ul>
 <li>LinuxでWindowsのドライブのパスは/mnt/ドライブ名</li>
-<li>.synctexファイルの中身のLinuxパスをWindowsパスに置換すればSynctexが使える</li>
+<li>.synctexファイルの中身のLinuxパスをWindowsパスに置換すれば，Windows上のエディタでもSynctexが使える</li>
 <li>Linuxパス(/mnt/c/&hellip;)をWindowsパス(c:...)に変換するwslpathコマンドが用意されている</li>
 <li>.synctexファイルを圧縮なしで出力(コンパイルのオプションに -synctex=-1 をつける)し，以下のようなbashスクリプトに渡せば自動化可能</li>
 <li>たとえば，TexStudioで，Latex→DVIPDF→下の変換スクリプト→PDFビューアの順で実行するユーザーコマンドを登録すればよい</li>
@@ -516,16 +516,17 @@ sed -i -e &quot;s|$FNL|$FNW|&quot; $FILEPATH
 done
 </code></pre><div class="gdoc-page__anchorwrap"><h4 id="補足">補足<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/wsl/#補足" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 補足" href="#補足"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h4></div>
 <ul>
-<li>Windows＋WSL環境でTexのソース(日本語)を書くなら，texmakerがおすすめ
+<li>Windows上のエディタ＋WSL上のコンパイラ環境でTex(日本語)を書くなら，texmakerがおすすめ
 <ul>
-<li>コンパイラの設定で，すべてのコマンドの前に&quot;ubuntu run &ldquo;を付ければwslにインストールしたTexLiveでコンパイルされる(日本語なのでLatexは&quot;ubuntu run uplatex %.tex&rdquo;，Bib(la)tex&quot;ubuntu run upbibtex %&quot;，Dvipdfmは&quot;ubuntu run dvipdfmx %.dvi&quot;くらい設定すれば十分，Latexmkを使うのもおすすめ)</li>
+<li>コンパイラの設定で，すべてのコマンドの前に&quot;ubuntu run &ldquo;を付ければwslにインストールしたTexLiveでコンパイルされる(日本語なのでLatexに&quot;ubuntu run uplatex %.tex&rdquo;，Bib(la)texに&quot;ubuntu run upbibtex %&quot;，Dvipdfmに&quot;ubuntu run dvipdfmx %.dvi&quot;くらい設定すれば十分，Latexmkを使うのもおすすめ)</li>
 </ul>
 </li>
 <li>英語しか書かないならTexStudioが良い感じ(日本語も使えなくはないが，私の環境では変換中の文字列が見えなくなるのであきらめた)</li>
-<li>WSLを使うのであれば，素直に流行を受け入れてVisual Studio Codeを使うのも簡単で良い→VSCodeをWSLに接続すれば，Tex作業がLinux上で完結するので，上のようにWindowsとLinuxでパスの記載が違うといった問題も生じない
+<li>WSLを使うのであれば，Visual Studio Codeを使うのが便利→VSCodeをWSLに接続すれば，すべてがLinux上で完結するので，Synctexのパスが違うといった問題も生じない
 <ul>
 <li>VSCodeはローカルのWSLだけでなく，リモート環境にもSSHで接続できるようになった</li>
-<li>外出先からもVSCodeだけあれば，自宅などのPCにリモートアクセスしてソースの編集やコンパイルなどが可能</li>
+<li>外出先からも，ラップトップにVSCodeだけインストールしておけば，自宅などのPCにリモートアクセスしてソースの編集やコンパイルなどが可能</li>
+<li>Texの拡張機能はTex Workshopの一択かな</li>
 </ul>
 </li>
 </ul>
