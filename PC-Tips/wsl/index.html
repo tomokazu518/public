@@ -469,11 +469,12 @@
 <p>WindowsのGドライブにマウントしたとすれば，以下のコマンドでUbuntuにもマウントできる</p>
 </li>
 </ul>
-<pre><code> sudo mount -t drvfs G: /mnt
+<pre><code> sudo mkdir /mnt/g
+ sudo mount -t drvfs G: /mnt/g
 </code></pre><ul>
 <li>マウントしたディレクトリに移動</li>
 </ul>
-<pre><code>cd /mnt
+<pre><code>cd /mnt/g
 </code></pre><ul>
 <li>インストーラーを実行(デフォルト設定で問題ないので&quot;I&quot;を入力してインストールを開始，そこそこ時間はかかるがネットワークインストールよりは速い)</li>
 </ul>
