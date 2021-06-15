@@ -244,6 +244,30 @@
             
             
                 <span class="flex">
+                    <a href="/public/PC-Tips/rstudio-server/" class="gdoc-nav__entry ">
+                        WSL(Windows Subsystem for Linux) 2 導入メモ
+                    </a>
+                </span>
+            
+            
+
+            
+            </li>
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+
+            <li>
+            
+            
+                <span class="flex">
                     <a href="/public/PC-Tips/stat/" class="gdoc-nav__entry ">
                         統計分析ソフトについてのメモ
                     </a>
@@ -343,7 +367,7 @@
 
 
   <div class="gdoc-toc gdoc-toc__level--6"><nav id="TableOfContents"><ul>
-        <li><a href="#wsl2のメリット">WSL2のメリット</a></li>
+        <li><a href="#wsl2">WSL2？</a></li>
         <li><a href="#wsl2のインストール">WSL2のインストール</a></li>
         <li><a href="#tex-live">Tex Live</a>
           <ul>
@@ -377,12 +401,17 @@
       </ul></nav><hr></div>
 
 
-<div class="gdoc-page__anchorwrap"><h2 id="wsl2のメリット">WSL2のメリット<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/wsl/#wsl2のメリット" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor WSL2のメリット" href="#wsl2のメリット"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<div class="gdoc-page__anchorwrap"><h2 id="wsl2">WSL2？<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/wsl/#wsl2" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor WSL2？" href="#wsl2"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <ul>
-<li>LinuxにはWindowsにはない便利なツールがある</li>
-<li>LatexなどはWindowsよりもLinuxの方が速いし安定している</li>
-<li>WSLはWindows上で動作するLinux環境</li>
-<li>メインマシンはLinuxにしようってほどは尖ってないが，Linuxのツールは使いたいという場合にはWSL2が便利</li>
+<li>WSLはWindows上(仮想環境)で動作するLinux環境</li>
+<li>Linuxには便利なツールがある(多くのツールはWindowsに移植されているが，安定性ではLinuxに軍配)</li>
+<li>とくにLatexのコンパイルなどはLinuxの方が速いし安定している</li>
+<li>メインマシンをLinuxにしようってほどは尖ってないが，Linuxのツールを使いたいという場合にはWSL2が便利</li>
+<li>基本的にはコマンド操作(GUIアプリは動かない)
+<ul>
+<li>最近，GUIアプリにも対応したらしいが，それならばWindowsをやめて完全にLinuxに乗り換えた方が良いような気もする</li>
+</ul>
+</li>
 </ul>
 <div class="gdoc-page__anchorwrap"><h2 id="wsl2のインストール">WSL2のインストール<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/wsl/#wsl2のインストール" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor WSL2のインストール" href="#wsl2のインストール"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p>基本的には，<a href="https://docs.microsoft.com/ja-jp/windows/wsl/install-win10">マイクロソフトのページ</a>を見ながらやればできるが，以下に要点だけ示す。</p>
@@ -497,13 +526,16 @@
 <p>エディタの設定でコンパイルに用いるコマンドの頭にwslを付ければOk</p>
 </li>
 <li>
-<p>ただし，SynctexはLinuxのパスで書き込まれるので，Windows上のエディタでそのまま使うことはできない</p>
+<p>ただし，SynctexはLinux形式のパスで書き込まれるので，Windows上のエディタでそのまま使うことはできない</p>
+</li>
+<li>
+<p>VSCodeのWSL拡張を使えば問題ないが，Windows上のエディタを使うには工夫が必要</p>
 <ul>
-<li>LinuxでWindowsのドライブのパスは/mnt/ドライブ名</li>
-<li>.synctexファイルの中身のLinuxパスをWindowsパスに置換すれば，Windows上のエディタでもSynctexが使える</li>
-<li>Linuxパス(/mnt/c/&hellip;)をWindowsパス(c:...)に変換するwslpathコマンドが用意されている</li>
+<li>WSL2のLinuxでWindowsのドライブのパスは/mnt/ドライブ名</li>
+<li>.synctexファイルに書き込まれたLinux形式のパスをWindows形式に置換すれば，Windows上のエディタでもSynctexが使える</li>
+<li>Linuxパス(/mnt/c/&hellip;)をWindowsパス(c:...)に変換するために，wslpathコマンドが用意されている</li>
 <li>.synctexファイルを圧縮なしで出力(コンパイルのオプションに -synctex=-1 をつける)し，以下のようなbashスクリプトに渡せば自動化可能</li>
-<li>たとえば，TexStudioで，Latex→DVIPDF→下の変換スクリプト→PDFビューアの順で実行するユーザーコマンドを登録すればよい</li>
+<li>たとえば，texmakerで，Latex→DVIPDF→下の変換スクリプト→PDFビューアの順で実行するユーザーコマンドを登録すればよい</li>
 </ul>
 </li>
 </ul>
@@ -517,13 +549,13 @@ sed -i -e &quot;s|$FNL|$FNW|&quot; $FILEPATH
 done
 </code></pre><div class="gdoc-page__anchorwrap"><h4 id="補足">補足<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/wsl/#補足" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 補足" href="#補足"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h4></div>
 <ul>
-<li>Windows上のエディタ＋WSL上のコンパイラ環境でTex(日本語)を書くなら，texmakerがおすすめ
+<li>Windows上のエディタ＋WSL上のコンパイラ環境でTex(日本語)を書くなら，Texmakerがおすすめ
 <ul>
 <li>コンパイラの設定で，すべてのコマンドの前に&quot;ubuntu run &ldquo;を付ければwslにインストールしたTexLiveでコンパイルされる(日本語なのでLatexに&quot;ubuntu run uplatex %.tex&rdquo;，Bib(la)texに&quot;ubuntu run upbibtex %&quot;，Dvipdfmに&quot;ubuntu run dvipdfmx %.dvi&quot;くらい設定すれば十分，Latexmkを使うのもおすすめ)</li>
 </ul>
 </li>
-<li>英語しか書かないならTexStudioが良い感じ(日本語も使えなくはないが，私の環境では変換中の文字列が見えなくなるのであきらめた)</li>
-<li>WSLを使うのであれば，Visual Studio Codeを使うのが便利→VSCodeをWSLに接続すれば，すべてがLinux上で完結するので，Synctexのパスが違うといった問題も生じない
+<li>英語しか書かないならTexmakerから派生したTexStudioが良い感じ(日本語も使えなくはないが，私の環境では漢字変換中の文字列が見えなくなるのであきらめた)</li>
+<li>WSLを使うのであれば，Visual Studio Codeを使うのが便利→VSCodeをWSLに接続すれば，ソースの編集もコンパイルもLinux上でできるので，Synctexのパスが違うといった問題も生じない
 <ul>
 <li>VSCodeはローカルのWSLだけでなく，リモート環境にもSSHで接続できるようになった</li>
 <li>外出先からも，ラップトップにVSCodeだけインストールしておけば，自宅などのPCにリモートアクセスしてソースの編集やコンパイルなどが可能</li>
