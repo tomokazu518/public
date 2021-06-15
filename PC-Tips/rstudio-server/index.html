@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ホストマシン以外からRStudio Serverにアクセスする">
+<meta name="description" content="WSLのRStudio Serverにホストマシン以外からアクセスする">
 
-<title>ホストマシン以外からRStudio Serverにアクセスする | Tomokazu NOMURA</title>
+<title>WSLのRStudio Serverにホストマシン以外からアクセスする | Tomokazu NOMURA</title>
 
 <link rel="icon" href="/public/favicon/favicon-32x32.png" type="image/x-icon">
 
@@ -245,7 +245,7 @@
             
                 <span class="flex">
                     <a href="/public/PC-Tips/rstudio-server/" class="gdoc-nav__entry is-active">
-                        ホストマシン以外からRStudio Serverにアクセスする
+                        WSLのRStudio Serverにホストマシン以外からアクセスする
                     </a>
                 </span>
             
@@ -338,7 +338,7 @@
         
     
     
-        <a href='/public/'>Tomokazu NOMURA's Web Page</a> / <a href='/public/pc-tips/'>PC  Tips</a> / ホストマシン以外からRStudio Serverにアクセスする
+        <a href='/public/'>Tomokazu NOMURA's Web Page</a> / <a href='/public/pc-tips/'>PC  Tips</a> / WSLのRStudio Serverにホストマシン以外からアクセスする
     
 
     
@@ -355,7 +355,7 @@
 
 
     <article class="gdoc-markdown">
-        <h1>ホストマシン以外からRStudio Serverにアクセスする</h1>
+        <h1>WSLのRStudio Serverにホストマシン以外からアクセスする</h1>
         
 
 
@@ -367,11 +367,30 @@
 
 
   <div class="gdoc-toc gdoc-toc__level--6"><nav id="TableOfContents"><ul>
+        <li><a href="#rstudio-server">RStudio Server？</a></li>
         <li><a href="#とりあえずアクセスできるように設定">とりあえずアクセスできるように設定</a></li>
         <li><a href="#通信を暗号化する">通信を暗号化する</a></li>
+        <li><a href="#lanの外から使う">LANの外から使う</a></li>
       </ul></nav><hr></div>
 
 
+<div class="gdoc-page__anchorwrap"><h2 id="rstudio-server">RStudio Server？<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/rstudio-server/#rstudio-server" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor RStudio Server？" href="#rstudio-server"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<ul>
+<li>RStudioをブラウザで使うことができる，自前のRStudio Cloud</li>
+<li>インターフェイスや操作性はデスクトップ版RStudioとほぼ変わらない</li>
+<li>メリット
+<ul>
+<li>サーバー1台に入れておけば，どのマシンからも同じ環境で分析可能</li>
+<li>中断した作業を別のマシンでシームレスに再開することができる</li>
+<li>Ipadやスマホでも使うことができる(実際に使うかどうかは別として)</li>
+</ul>
+</li>
+<li>デメリット
+<ul>
+<li>オフラインで使えない</li>
+</ul>
+</li>
+</ul>
 <div class="gdoc-page__anchorwrap"><h2 id="とりあえずアクセスできるように設定">とりあえずアクセスできるように設定<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/rstudio-server/#とりあえずアクセスできるように設定" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor とりあえずアクセスできるように設定" href="#とりあえずアクセスできるように設定"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <ul>
 <li>WSL2のIPアドレスは起動するたびに変わる
@@ -398,7 +417,7 @@ rstudio-server start
 </code></pre><ul>
 <li>マシンの起動時にこのスクリプトを実行するため，batファイルを作ってWindowsのタスクスケジューラに登録(トリガーは起動時に設定，最上位の権限で実行するにチェックを入れる)</li>
 </ul>
-<pre><code class="language-{bat}" data-lang="{bat}">wsl -u root  ~/port_forwarding.sh
+<pre><code>wsl -u root  ~/ptfwd.sh
 </code></pre><ul>
 <li>これでLAN内からであれば，IPアドレスもしくはマシン名の8787ポートにアクセスして，RStudio Serverを使うことができる。たとえば，http://192.168.1.2:8787</li>
 </ul>
@@ -457,7 +476,7 @@ openssl x509 -days 3650 -req -signkey server.key &lt; server.csr &gt; server.crt
 <pre><code># IPアドレスの取得
 IP=$(ifconfig eth0 | grep 'inet ' | awk '{print $2}')  
 
-# ポート4343をWSLのIPアドレスに転送(古い設定を削除後，新しいIPアドレスを設定)
+# ポート443をWSLのIPアドレスに転送(古い設定を削除後，新しいIPアドレスを設定)
 netsh.exe interface portproxy delete v4tov4 listenport=443
 netsh.exe interface portproxy add v4tov4 listenport=443 connectaddress=$IP
 
@@ -469,6 +488,22 @@ rstudio-server start
 <li>このままだとブラウザでアクセスすると証明書に関する警告が出るので，アクセスするマシンに作成したserver.crtをインポート
 <ul>
 <li>Windowsであればコントロールパネルのユーザー証明書の管理で，信頼されたルート証明機関にインポート</li>
+</ul>
+</li>
+</ul>
+<div class="gdoc-page__anchorwrap"><h2 id="lanの外から使う">LANの外から使う<a data-clipboard-text="http://tomokazu518.github.io/public/PC-Tips/rstudio-server/#lanの外から使う" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor LANの外から使う" href="#lanの外から使う"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<ul>
+<li>ルータで443ポートを開けてホストマシンに転送するよう設定すれば，外出先からもアクセス可能
+<ul>
+<li>V6プラスなどでポートを開けられないとかセキュリティに不安があるなら，VPN接続</li>
+<li>Tailscaleを利用すればあっという間にVPNを構築できる</li>
+</ul>
+</li>
+<li>サーバーを常時起動していると電気代とかが気になる
+<ul>
+<li>Raspberry PIにTailscaleを入れて常時起動しておき，Raspberry PI経由でサーバーをWake on Lan</li>
+<li>Rasoberry PIの電気代は月100円未満</li>
+<li>なんならRaspberry PIでRStudio Serverホストしてもいいかも(Raspberry PI 4とかだと十分に使えそうだけど，試してない)</li>
 </ul>
 </li>
 </ul>
