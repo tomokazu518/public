@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PC Tips on Tomokazu NOMURA</title>
+    <link>http://tomokazu518.github.io/public/PC/</link>
+    <description>Recent content in PC Tips on Tomokazu NOMURA</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language><atom:link href="http://tomokazu518.github.io/public/PC/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WSL(Windows Subsystem for Linux) 2 導入メモ</title>
+      <link>http://tomokazu518.github.io/public/PC/wsl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://tomokazu518.github.io/public/PC/wsl/</guid>
+      <description>WSL2？ WSL2のインストール 初期設定     WSL2？  WSLはWindows上(仮想環境)で動作するLinux環境 Linuxには便利なツールがある(多くのツールはWindowsに移植されているが，安定性ではLinuxに軍配) とくにLatexのコンパイルなどはLinuxの方が速いし安定している メインマシンをLinuxにしようってほどは尖ってないが，Linuxのツールを使いたいという場合にはWSL2が便利 基本的にはコマンド操作だが，最近GUIアプリも動くようになった  WSL2のインストール  BIOSで仮想化支援機能を有効にする  有効になっているかどうかはVirtualCheckerで確認できる(最初から有効になっている場合もある) BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目   Windows 11であれば，PowerShellで以下のように入力するだけでインストールできる（仮想化支援機能の有効化は必要）。デフォルトでは，Ubuntuがインストールされる。  wsl --install  Windows 10の場合は，以下の手順でインストールする。
+基本的には，マイクロソフトのページを見ながらやればできるが，以下に要点だけ示す。
+  Windowsを1903以上のバージョンに更新する
+ Windows Updateで自動的に更新されていれば問題ない 自動更新が行われない場合は，Windows更新ツールを使う    (PowerShell管理者で)Linux用Windowsサブシステムを有効にする
+  dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart  (PowerShell管理者で)仮想マシン機能を有効にする  dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart   WSL2 Linuxカーネルの更新</description>
+    </item>
+    
+    <item>
+      <title>WSLでLatexとPandoc</title>
+      <link>http://tomokazu518.github.io/public/PC/latex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://tomokazu518.github.io/public/PC/latex/</guid>
+      <description>はじめに  WSLを使えば仮想環境のLinuxでtexのコンパイルを行うことが可能  Windowsでもtex環境は構築できるがコンパイルが遅い Windowsは文字コードの問題など，ならではのトラブルも多い とはいえ文書を編集するときは使い慣れたWindows環境の方が捗るので，ソースの編集はWindows上で行い，コンパイルはWSLで行う   PandocもWSLに入れておいた方が便利  Pandocはmarkdownで書いたファイルをいろいろな形式(PDF, Word, tex, htmlなどなど)に変換できるコンバータ markdownはtexに比べてシンプルで可読性が高い
+→基本的に執筆はmarkdownで行って，texに変換してPDF化するのが良いと思う 数式や図表の挿入，文献参照(bibtex)などかなりの部分はmarkdownでできるし，texに変換してPDF化可能 相互参照(texの\label, \ref)はpandoc-crossrefというフィルターをインストールすれば可能    Latex Tex Liveのインストール  libfontconfigパッケージをインストールしておく  sudo apt intall libfontconfig  Tex Liveインストーラを利用する ここからisoファイルをダウンロード ダウンロードしたisoファイルをWindowsでマウント WindowsのGドライブにマウントしたとすれば，以下のコマンドでWSLにもマウントできる  sudo mkdir /mnt/g sudo mount -t drvfs G: /mnt/g  マウントしたディレクトリに移動して，インストーラを実行((デフォルト設定で問題ないので&amp;quot;I&amp;quot;を入力してインストールを開始)  cd /mnt/g sudo ./install-tl  パスを通す(tlmgrコマンドを使って/usr/local/binにシンボリックリンクを追加，削除したいときは&amp;quot;add&amp;quot;を&amp;quot;remove&amp;quot;に)  sudo /usr/local/texlive/????/bin/*/tlmgr path add  パッケージのアップデート  sudo tlmgr update --self --all Windowsからの使い方  Windowsのコマンドラインで実行したいコマンドの前にwslをつけるだけ たとえば，Linuxのuplatexを使ってsample.</description>
+    </item>
+    
+    <item>
+      <title>BeamerスライドをMarkdownで簡単に作成</title>
+      <link>http://tomokazu518.github.io/public/PC/beamer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://tomokazu518.github.io/public/PC/beamer/</guid>
+      <description>はじめに Markdownとは  Markdownの書き方例   Beamerスライドの作成 Markdownファイルの作成  Markdownファイルの作成例 Pandocで変換 変換結果       はじめに Beamerのスライドはかっこいいので，それを見てLatexを使いたいと思った人も多いはず。しかし，Latexを覚えるのは大変だし，いろいろコマンドが入り混じったソースコードは可読性が低い。
+そこで，Markdownという非常にシンプルな記法で内容を記述し，Pandocというソフトを使ってBeamerに変換する方法を紹介する。
+Markdownはテキスト・データなので，編集はPowerPointよりも軽快で内容に集中できるし，Gitでバージョン管理することもできる。ただし，Latex経由でPDFを作成するため，Latexのコンパイル環境は必要。また，PDFに変換するまでスライドの仕上がりを確認できない点や，PowerPointのようにコンテンツを柔軟にレイアウトすることが難しい点もデメリットかもしれない。
+Markdownとは Markdownは，文書を書くための記法の一つ。テキスト・エディタで作成する。文書の構造(章・節)や，箇条書き，文字列の強調などをシンプルな記法で表現することができ，Pandocというツールを用いればhtmlやword形式，Latexなどに変換することができる(いくつかのフォーマットは逆にMarkdownへと変換することも可能)。
+Markdownの書き方は非常にシンプル。まずは，以下だけ覚えれば十分。
+ #がレベル1の見出し，##がレベル2の見出しといったように行頭に＃をつけるとその行が節や章の見出しとなる 段落の区切りは，間に一行空行を入れることで表現 箇条書きは，項目の頭に&amp;quot;- &amp;ldquo;をつける 番号付き箇条書きは，項目の頭に”1. &amp;ldquo;をつける(番号はすべて1.にしておけば自動で振ってくれる) 数式は&amp;rdquo;$&amp;ldquo;で囲ってTeX形式で書く(インラインの場合は$1個，別行立ての場合は$2個) 強調する文字列は&amp;rdquo;**&amp;ldquo;で囲む，イタリックにしたい文字は&amp;rdquo;*&amp;ldquo;で囲む  Markdownの書き方例 --- title: Markdownの書き方例 --- # はじめに(レベル1の見出し)  ## はじめの一歩(レベル2の見出し)  - 箇条書き1 - 箇条書き2 ## 次の一歩(レベル2の見出し)  1. 番号付き箇条書きは，1.をつける 1. すべて1.にしておく 1. 自動で番号を振ってくれる # 文章を書く(レベル1の見出し)  内容はテキスト・エディタなどで作成する。メモ帳でも十分だが，Markdown専用のエディタもいろいろあるので，使いやすいものを選ぼう。 段落を区切るときには，改行してさらに一行空行を挿入する。段落のはじめに一文字空ける必要はない(wordやPDFに変換するときに自動でフォーマットされる)。 文字列の**強調**，*斜体*は，”*&amp;#34;で囲むことで表現できる。 $$\log (1+x) \approx x$$ インライン数式は，$\log (1+x) \approx x$のように&amp;#34;$&amp;#34;で囲む。 htmlに変換するコマンドは以下。</description>
+    </item>
+    
+    <item>
+      <title>WSLでRStudio Server</title>
+      <link>http://tomokazu518.github.io/public/PC/rstudio-server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://tomokazu518.github.io/public/PC/rstudio-server/</guid>
+      <description>RStudio Server？ WSLへのインストール  R本体のインストール RStudio Serverのインストール RStudio ServerでTex Liveを使う   通信を暗号化する  リバースプロキシ 証明書の作成 Nginxの設定   クライアントマシンからアクセスできるように設定 LANの外から使う     RStudio Server？  RStudioをブラウザで使うことができる，自前のRStudio Cloud インターフェイスや操作性はデスクトップ版RStudioとほぼ変わらない メリット  サーバー1台に入れておけば，どのマシンからも同じ環境で分析可能 中断した作業を別のマシンでシームレスに再開することができる iPadやスマホでも使うことができる(実際に使うかどうかは別として)    WSLへのインストール R本体のインストール  基本的には，ここで解説されている通り まず，証明書とレポジトリを追加(jammyの部分はUbuntuのバージョンによって変更)  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 sudo add-apt-repository &amp;#39;deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/&amp;#39;  RおよびRStudio Serverを使うために必要なパッケージをインストール  sudo apt install -y r-base r-base-core r-recommended r-base-dev gdebi-core build-essential libcurl4-gnutls-dev libxml2-dev libssl-dev RStudio Serverのインストール  Ubuntu用のRStudio Serverをダウンロード(jammyの部分はUbuntuのバージョンによって変更)  wget https://rstudio.</description>
+    </item>
+    
+    <item>
+      <title>統計分析ソフトについてのメモ</title>
+      <link>http://tomokazu518.github.io/public/PC/stat/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://tomokazu518.github.io/public/PC/stat/</guid>
+      <description>統計分析ソフトの必要性   統計データを分析するためには，ソフトウェアが必要
+ 統計分析のための専門的なソフトウェアを使えることは，今後の社会において求められる重要なスキル 統計分析のためのソフトウェアには，有償・無償ともにさまざまなものがある    Excelとの違い
+ 機能  Excelは統計を分析するためのソフトウェアではないのでできることが限られている 統計分析ソフトではさまざまな手法を簡単に実行可能   再現性  Excelによる分析は，再現性を担保するのが難しい(Excelファイルを見てもデータの加工や分析の過程がわからない) 統計分析ソフトはコード(プログラム)を見れば分析の過程が明らか      無償の統計分析ソフト gretl gretlは，GUIで操作できるため，初心者でもわかりやすくて使いやすい。よく使われる計量モデルは一通り推定可能。グラフはgnuplotというメジャーなグラフ描画ソフトが組み込まれている。ただし，できることは限られているので，本格的に学びたいのであればRの方がおすすめ。ドキュメント類は英語だが，メニューなどは日本語化されている。
+使い方を解説した書籍やウェブページもいくつかあるが，「日本の人事を科学する」gretlテキストがわかりやすい。
+R Rは最もよく利用されている統計分析の専用ソフト(だと思う)。非常に多くのパッケージが開発されており，ほぼ何でもできる。RStudioを使うことで，非常に使いやすく強力な分析環境を整えることができる。
+RおよびRStudioのインストール方法については，高知工科大学の矢内勇生先生のページで非常に丁寧に解説されている。
+R(とくにtidyverse)の使い方については，Rによる計量政治学がおすすめ。実際にRを操作しながら学んでいくことができる。また，社会科学のためのデータ分析入門は，Rで実際の研究で使われたデータを分析しながら分析方法を学ぶことができる非常に良いテキスト。
+インターネットで読めるものとしては，以下のページがわかりやすい。
+ 森知晴先生(立命館大学)の卒業論文のためのR入門 土居翔平先生(北海道大学)のRで計量政治学入門  </description>
+    </item>
+    
+    <item>
+      <title>WSLでStata</title>
+      <link>http://tomokazu518.github.io/public/PC/Stata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://tomokazu518.github.io/public/PC/Stata/</guid>
+      <description>はじめに StataのLinux版はWSLでも使うことができる。Linux版はCUIで使うこともできるし，GUIも普通に動く。 いや，Windowsで動かせばいいでしょって気もするが，処理速度が速い(かもしれない)とか，Jupyter notebookでStataを使うとか，あるいは将来的にはWindowsをあきらめてLinuxに移行したいという場合には役立つかもしれない。
+Stataのインストール WSLにLinux版Stataをインストールする方法は，公式ページに説明されている通り。 ただし，足りないパッケージがあって起動しないので，libtinfoとlibncursesをインストールしておく。
+sudo apt install -y libtinfo5 sudo apt install -y libncurses5 上記の公式ページの通りにインストールを実行，終わったら画面に表示される指示にしたがい，(rootのままで)stinitを実行する。
+/usr/local/stata17/stinit 指示にしたがいながらライセンス情報を入力すればOk。
+WSLでもGUIが使える。ただし，libgtk2.0-0というパッケージが足りないのでインストールしておく。
+sudo apt install libgtk2.0-0 Stataを起動するには，以下のコマンドを実行(わたしのライセンスはMPだが，全部インストールされた)。
+   バージョン CUI起動コマンド GUI起動コマンド     Stata BE stata xstata   Stata SE stata-se xstata-se   Stata MP stata-mp xstata-mp    /usr/local/stata17にPathを通しておくと便利かもしれない。
+Jupyter notebookでStataを使う 個人的にStataのDoファイル・エディタはどうもしっくりこないので，Jupyter notebookを併用している。VSCodeで実行しながらコードを書くことができるので便利。
+PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使うと良いかもしれない。
+Jupyter ntoebookのインストール たぶんAnacondaとかJupyter Labとかフルセットの環境を構築した方が良いと思うが，ここでは必要最低限でいきたい。
+まず，Pythonのパッケージ・マネージャであるpipをインストールする(WSLのUbuntu 22.04にはpython3は入っていたが，pip3は入っていなかった)。
+sudo apt install python3-pip pipを使って，Jupyter notebookをインストール。</description>
+    </item>
+    
+  </channel>
+</rss>

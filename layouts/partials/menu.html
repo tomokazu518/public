@@ -1,0 +1,24 @@
+<nav>
+    {{ partial "search" . }}
+
+    <section class="gdoc-nav--main">
+        <h4>Contents</h4>
+        {{ if .Site.Params.GeekdocMenuBundle }}
+            {{ partial "menu-bundle" (dict "current" . "source" .Site.Data.menu.main.main) }}
+        {{ else }}
+            {{ partial "menu-filetree" . }}
+        {{ end }}
+    </section>
+
+    <section class="gdoc-nav--more">
+        {{ if .Site.Data.menu.more.more }}
+            <h4>More</h4>
+            {{ partial "menu-bundle" (dict "current" . "source" .Site.Data.menu.more.more) }}
+        {{ end }}
+    </section>
+
+
+<a href="https://twitter.com/NomuraTomokazu?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @NomuraTomokazu</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+</nav>
