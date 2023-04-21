@@ -785,39 +785,38 @@ if (!doNotTrack) {
 <li>強調する文字列は&rdquo;**&ldquo;で囲む，イタリックにしたい文字は&rdquo;*&ldquo;で囲む</li>
 </ul>
 <div class="gdoc-page__anchorwrap"><h3 id="markdownの書き方例">Markdownの書き方例<a data-clipboard-text="http://tomokazu518.github.io/public/PC/beamer/#markdownの書き方例" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Markdownの書き方例" href="#markdownの書き方例"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">
----
-title: Markdownの書き方例 
----
-
-<span class="gh"># はじめに(レベル1の見出し)
-</span><span class="gh"></span>
-<span class="gu">## はじめの一歩(レベル2の見出し)
-</span><span class="gu"></span>
-<span class="k">-</span> 箇条書き1
-<span class="k">-</span> 箇条書き2
-
-<span class="gu">## 次の一歩(レベル2の見出し)
-</span><span class="gu"></span>
-<span class="k">1.</span> 番号付き箇条書きは，1.をつける
-<span class="k">1.</span> すべて1.にしておく
-<span class="k">1.</span> 自動で番号を振ってくれる
-
-<span class="gh"># 文章を書く(レベル1の見出し)
-</span><span class="gh"></span>
-内容はテキスト・エディタなどで作成する。メモ帳でも十分だが，Markdown専用のエディタもいろいろあるので，使いやすいものを選ぼう。
-
-段落を区切るときには，改行してさらに一行空行を挿入する。段落のはじめに一文字空ける必要はない(wordやPDFに変換するときに自動でフォーマットされる)。
-
-文字列の**強調**，*斜体*は，”*&#34;で囲むことで表現できる。
-
-$$\log (1+x) \approx x$$
-
-インライン数式は，$\log (1+x) \approx x$のように&#34;$&#34;で囲む。
-
-</code></pre></div><p>htmlに変換するコマンドは以下。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">pandoc sample1.md -o sample1.html<span class="s2">&#34;
-</span></code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="beamerスライドの作成">Beamerスライドの作成<a data-clipboard-text="http://tomokazu518.github.io/public/PC/beamer/#beamerスライドの作成" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Beamerスライドの作成" href="#beamerスライドの作成"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: Markdownの書き方例 
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gh"># はじめに(レベル1の見出し)
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>
+</span></span><span class="line"><span class="cl"><span class="gu">## はじめの一歩(レベル2の見出し)
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
+</span></span><span class="line"><span class="cl"><span class="k">-</span> 箇条書き1
+</span></span><span class="line"><span class="cl"><span class="k">-</span> 箇条書き2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">## 次の一歩(レベル2の見出し)
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
+</span></span><span class="line"><span class="cl"><span class="k">1.</span> 番号付き箇条書きは，1.をつける
+</span></span><span class="line"><span class="cl"><span class="k">1.</span> すべて1.にしておく
+</span></span><span class="line"><span class="cl"><span class="k">1.</span> 自動で番号を振ってくれる
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gh"># 文章を書く(レベル1の見出し)
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span>
+</span></span><span class="line"><span class="cl">内容はテキスト・エディタなどで作成する。メモ帳でも十分だが，Markdown専用のエディタもいろいろあるので，使いやすいものを選ぼう。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">段落を区切るときには，改行してさらに一行空行を挿入する。段落のはじめに一文字空ける必要はない(wordやPDFに変換するときに自動でフォーマットされる)。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">文字列の**強調**，*斜体*は，”*&#34;で囲むことで表現できる。
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$$\log (1+x) \approx x$$
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">インライン数式は，$\log (1+x) \approx x$のように&#34;$&#34;で囲む。
+</span></span></code></pre></div><p>htmlに変換するコマンドは以下。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pandoc sample1.md -o sample1.html<span class="s2">&#34;
+</span></span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="beamerスライドの作成">Beamerスライドの作成<a data-clipboard-text="http://tomokazu518.github.io/public/PC/beamer/#beamerスライドの作成" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Beamerスライドの作成" href="#beamerスライドの作成"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p>MarkdownからBeamerプレゼンテーションのPDFを作成するために必要なものは以下。</p>
 <ul>
 <li>Markdownを書くためのエディタ
@@ -859,64 +858,63 @@ $$\log (1+x) \approx x$$
 <li>スライドタイトルを##(レベル2の見出し)で書く
 <ul>
 <li>レベル2の見出しがあると，自動的に新しいスライドが作成される</li>
-<li>スライドタイトルなしで新しいスライドを作成するには，&quot;&mdash;&ldquo;を入れる</li>
+<li>スライドタイトルなしで新しいスライドを作成するには，&rdquo;&mdash;&ldquo;を入れる</li>
 </ul>
 </li>
 <li>テーマとかTeXのプリアンブルに書くような内容は，yamlヘッダの部分に書く</li>
 </ul>
 <div class="gdoc-page__anchorwrap"><h3 id="markdownファイルの作成例">Markdownファイルの作成例<a data-clipboard-text="http://tomokazu518.github.io/public/PC/beamer/#markdownファイルの作成例" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Markdownファイルの作成例" href="#markdownファイルの作成例"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown">
----
-title: &#34;MarkdownからBeamer&#34;
-subtitle: &#34;Pandocで変換&#34;
-author: &#34;A大学　B太郎&#34;
-date: 2021/02/08
-header-includes: 
-<span class="k">-</span> \usepackage{bookmark}
-<span class="k">-</span> \usepackage{zxjatype}
-<span class="k">-</span> \usepackage[ipa]{zxjafont}  
-<span class="k">-</span> \usetheme{metropolis}
----
-
-<span class="gu">## yamlヘッダの説明
-</span><span class="gu"></span>
-<span class="k">-</span> yamlヘッダのメタ情報
-    <span class="k">-</span> title: プレゼンテーションのタイトル
-    <span class="k">-</span> subtitle: サブタイトル
-    <span class="k">-</span> author: 発表者
-    <span class="k">-</span> date: 日付
-
-<span class="gu">## TeXのプリアンブル部分の説明
-</span><span class="gu"></span>
-<span class="k">1.</span>  \\usepackage{bookmark}         : PDFにしおりを付ける
-<span class="k">1.</span>  \\usepackage{zxjatype}            : 日本語を使うために必要 
-<span class="k">1.</span>  \\usepackage[ipa]{zxjafont}     : フォントの指定(ここではIPAフォントを指定している)
-<span class="k">1.</span>  \\usetheme{metropolis}           : beamerのテーマ，metropolisおすすめ(TeX Liveに最初から入ってる)
-
----
-
-<span class="gu">## そのほか
-</span><span class="gu"></span>
-<span class="k">-</span> インライン数式:，$\log (1+x)=x$
-<span class="k">-</span> 別行立て数式
-$$f(x)=\dfrac{1}{\sqrt{2\pi\sigma}}\exp(-\dfrac{(x-\mu)^ 2}{2\sigma^ 2})$$
-<span class="k">-</span> 表
-
-||a|b|
-|-|-|-|
-|c|0|1|
-|d|1|0|
-
----
-
-<span class="k">-</span> 図
-
-![<span class="nt">図のキャプション</span>](<span class="na">figure.png</span>){width=8cm}
-
-</code></pre></div><div class="gdoc-page__anchorwrap"><h3 id="pandocで変換">Pandocで変換<a data-clipboard-text="http://tomokazu518.github.io/public/PC/beamer/#pandocで変換" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Pandocで変換" href="#pandocで変換"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">title: &#34;MarkdownからBeamer&#34;
+</span></span><span class="line"><span class="cl">subtitle: &#34;Pandocで変換&#34;
+</span></span><span class="line"><span class="cl">author: &#34;A大学　B太郎&#34;
+</span></span><span class="line"><span class="cl">date: 2021/02/08
+</span></span><span class="line"><span class="cl">header-includes: 
+</span></span><span class="line"><span class="cl"><span class="k">-</span> \usepackage{bookmark}
+</span></span><span class="line"><span class="cl"><span class="k">-</span> \usepackage{zxjatype}
+</span></span><span class="line"><span class="cl"><span class="k">-</span> \usepackage[ipa]{zxjafont}  
+</span></span><span class="line"><span class="cl"><span class="k">-</span> \usetheme{metropolis}
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">## yamlヘッダの説明
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
+</span></span><span class="line"><span class="cl"><span class="k">-</span> yamlヘッダのメタ情報
+</span></span><span class="line"><span class="cl">    <span class="k">-</span> title: プレゼンテーションのタイトル
+</span></span><span class="line"><span class="cl">    <span class="k">-</span> subtitle: サブタイトル
+</span></span><span class="line"><span class="cl">    <span class="k">-</span> author: 発表者
+</span></span><span class="line"><span class="cl">    <span class="k">-</span> date: 日付
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">## TeXのプリアンブル部分の説明
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
+</span></span><span class="line"><span class="cl"><span class="k">1.</span>  \\usepackage{bookmark}         : PDFにしおりを付ける
+</span></span><span class="line"><span class="cl"><span class="k">1.</span>  \\usepackage{zxjatype}            : 日本語を使うために必要 
+</span></span><span class="line"><span class="cl"><span class="k">1.</span>  \\usepackage[ipa]{zxjafont}     : フォントの指定(ここではIPAフォントを指定している)
+</span></span><span class="line"><span class="cl"><span class="k">1.</span>  \\usetheme{metropolis}           : beamerのテーマ，metropolisおすすめ(TeX Liveに最初から入ってる)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">## そのほか
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>
+</span></span><span class="line"><span class="cl"><span class="k">-</span> インライン数式:，$\log (1+x)=x$
+</span></span><span class="line"><span class="cl"><span class="k">-</span> 別行立て数式
+</span></span><span class="line"><span class="cl">$$f(x)=\dfrac{1}{\sqrt{2\pi\sigma}}\exp(-\dfrac{(x-\mu)^ 2}{2\sigma^ 2})$$
+</span></span><span class="line"><span class="cl"><span class="k">-</span> 表
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">||a|b|
+</span></span><span class="line"><span class="cl">|-|-|-|
+</span></span><span class="line"><span class="cl">|c|0|1|
+</span></span><span class="line"><span class="cl">|d|1|0|
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">---
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">-</span> 図
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">![<span class="nt">図のキャプション</span>](<span class="na">figure.png</span>){width=8cm}
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h3 id="pandocで変換">Pandocで変換<a data-clipboard-text="http://tomokazu518.github.io/public/PC/beamer/#pandocで変換" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Pandocで変換" href="#pandocで変換"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <p>コマンドプロンプトかPowershellでサンプルの.mdと画像の入ったフォルダに移動して，以下のコマンドを実行すればPDFができるはず。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">pandoc sample.md --pdf-engine<span class="o">=</span>xelatex  -t beamer  -o sample.pdf 
-</code></pre></div><div class="gdoc-page__anchorwrap"><h3 id="変換結果">変換結果<a data-clipboard-text="http://tomokazu518.github.io/public/PC/beamer/#変換結果" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 変換結果" href="#変換結果"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pandoc sample.md --pdf-engine<span class="o">=</span>xelatex  -t beamer  -o sample.pdf 
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h3 id="変換結果">変換結果<a data-clipboard-text="http://tomokazu518.github.io/public/PC/beamer/#変換結果" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 変換結果" href="#変換結果"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <figure><img src="../sample-0.png"
          alt="Beamer sample page 1"/>
 </figure>
@@ -985,7 +983,7 @@ $$f(x)=\dfrac{1}{\sqrt{2\pi\sigma}}\exp(-\dfrac{(x-\mu)^ 2}{2\sigma^ 2})$$
 
 
 
-<script defer src="/public/js/en.search.min.f123a6fa1e50dc4a189b0cd83dc30dbc50187578d29d9e5ddb0eab87af2a51a8.js"></script>
+<script defer src="/public/js/en.search.min.73574bd98e3ecb463f27c8bb9613e9d21e744147a08b4a3b676799dde5c2b490.js"></script>
 
 
 

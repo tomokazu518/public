@@ -776,8 +776,8 @@ if (!doNotTrack) {
 </li>
 <li>Windows 11であれば，PowerShellで以下のように入力するだけでインストールできる（仮想化支援機能の有効化は必要）。デフォルトでは，Ubuntuがインストールされる。</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span>
-</code></pre></div><hr>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span>
+</span></span></code></pre></div><hr>
 <p>Windows 10の場合は，以下の手順でインストールする。</p>
 <p>基本的には，<a href="https://docs.microsoft.com/ja-jp/windows/wsl/install-win10">マイクロソフトのページ</a>を見ながらやればできるが，以下に要点だけ示す。</p>
 <ul>
@@ -792,12 +792,12 @@ if (!doNotTrack) {
 <p>(PowerShell管理者で)Linux用Windowsサブシステムを有効にする</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dism</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">online</span> <span class="p">/</span><span class="nb">enable-feature</span> <span class="p">/</span><span class="n">featurename</span><span class="err">:</span><span class="nb">Microsoft-Windows</span><span class="n">-Subsystem-Linux</span> <span class="p">/</span><span class="n">all</span> <span class="p">/</span><span class="n">norestart</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">dism</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">online</span> <span class="p">/</span><span class="nb">enable-feature</span> <span class="p">/</span><span class="n">featurename</span><span class="err">:</span><span class="nb">Microsoft-Windows</span><span class="n">-Subsystem-Linux</span> <span class="p">/</span><span class="n">all</span> <span class="p">/</span><span class="n">norestart</span>
+</span></span></code></pre></div><ul>
 <li>(PowerShell管理者で)仮想マシン機能を有効にする</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">dism</span><span class="p">.</span><span class="n">exe</span> <span class="p">/</span><span class="n">online</span> <span class="p">/</span><span class="nb">enable-feature</span> <span class="p">/</span><span class="n">featurename</span><span class="err">:</span><span class="n">VirtualMachinePlatform</span> <span class="p">/</span><span class="n">all</span> <span class="p">/</span><span class="n">norestart</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">dism</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">online</span> <span class="p">/</span><span class="nb">enable-feature</span> <span class="p">/</span><span class="n">featurename</span><span class="err">:</span><span class="n">VirtualMachinePlatform</span> <span class="p">/</span><span class="n">all</span> <span class="p">/</span><span class="n">norestart</span>
+</span></span></code></pre></div><ul>
 <li>
 <p>WSL2 Linuxカーネルの更新</p>
 <ul>
@@ -809,8 +809,8 @@ if (!doNotTrack) {
 <p>(PowerShell管理者で)WSL2を既定のバージョンに設定</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">wsl</span> <span class="p">-</span><span class="n">-set-default-version</span> <span class="n">2</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-set-default-version</span> <span class="mf">2</span>
+</span></span></code></pre></div><ul>
 <li><a href="https://aka.ms/wslstore">Microsoft Store</a>からLinuxのディストリビューションをインストールする（おすすめはUbuntu，以下の説明はUbuntu前提）</li>
 </ul>
 <hr>
@@ -827,15 +827,15 @@ if (!doNotTrack) {
 <p>(Linuxのシェルで)パッケージのアップデート</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo apt update
-sudo apt upgrade -y
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update
+</span></span><span class="line"><span class="cl">sudo apt upgrade -y
+</span></span></code></pre></div><ul>
 <li>WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに&quot;¥¥wsl$&ldquo;と入力</li>
 <li>WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">wsl ls -l
-ubuntu run ls -l
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl ls -l
+</span></span><span class="line"><span class="cl">ubuntu run ls -l
+</span></span></code></pre></div>
 
     </article>
 
@@ -883,7 +883,7 @@ ubuntu run ls -l
 
 
 
-<script defer src="/public/js/en.search.min.f123a6fa1e50dc4a189b0cd83dc30dbc50187578d29d9e5ddb0eab87af2a51a8.js"></script>
+<script defer src="/public/js/en.search.min.73574bd98e3ecb463f27c8bb9613e9d21e744147a08b4a3b676799dde5c2b490.js"></script>
 
 
 

@@ -772,35 +772,35 @@ if (!doNotTrack) {
 <ul>
 <li>libfontconfigパッケージをインストールしておく</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo apt intall libfontconfig
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt intall libfontconfig
+</span></span></code></pre></div><ul>
 <li>Tex Liveインストーラを利用する</li>
 <li><a href="https://ftp.yz.yamagata-u.ac.jp/pub/CTAN/systems/texlive/Images/">ここ</a>からisoファイルをダウンロード</li>
 <li>ダウンロードしたisoファイルをWindowsでマウント</li>
 <li>WindowsのGドライブにマウントしたとすれば，以下のコマンドでWSLにもマウントできる</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"> sudo mkdir /mnt/g
- sudo mount -t drvfs G: /mnt/g
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> sudo mkdir /mnt/g
+</span></span><span class="line"><span class="cl"> sudo mount -t drvfs G: /mnt/g
+</span></span></code></pre></div><ul>
 <li>マウントしたディレクトリに移動して，インストーラを実行((デフォルト設定で問題ないので&quot;I&quot;を入力してインストールを開始)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /mnt/g
-sudo ./install-tl
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /mnt/g
+</span></span><span class="line"><span class="cl">sudo ./install-tl
+</span></span></code></pre></div><ul>
 <li>パスを通す(tlmgrコマンドを使って/usr/local/binにシンボリックリンクを追加，削除したいときは&quot;add&quot;を&quot;remove&quot;に)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo /usr/local/texlive/????/bin/*/tlmgr path add
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo /usr/local/texlive/????/bin/*/tlmgr path add
+</span></span></code></pre></div><ul>
 <li>パッケージのアップデート</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo tlmgr update --self --all
-</code></pre></div><div class="gdoc-page__anchorwrap"><h3 id="windowsからの使い方">Windowsからの使い方<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#windowsからの使い方" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Windowsからの使い方" href="#windowsからの使い方"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo tlmgr update --self --all
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h3 id="windowsからの使い方">Windowsからの使い方<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#windowsからの使い方" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Windowsからの使い方" href="#windowsからの使い方"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <ul>
 <li>Windowsのコマンドラインで実行したいコマンドの前にwslをつけるだけ</li>
 <li>たとえば，Linuxのuplatexを使ってsample.texをコンパイルするには</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="n">wsl</span> <span class="n">uplatex</span> <span class="n">sample</span><span class="p">.</span><span class="n">tex</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="n">uplatex</span> <span class="n">sample</span><span class="p">.</span><span class="py">tex</span>
+</span></span></code></pre></div><ul>
 <li>Latex用エディタの設定でコンパイルに用いるコマンドの頭にwslをつけておけばOk</li>
 </ul>
 <div class="gdoc-page__anchorwrap"><h3 id="latex環境の構築はvisual-studio-codeがおすすめ">Latex環境の構築はVisual Studio Codeがおすすめ<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#latex環境の構築はvisual-studio-codeがおすすめ" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Latex環境の構築はVisual Studio Codeがおすすめ" href="#latex環境の構築はvisual-studio-codeがおすすめ"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
@@ -820,12 +820,12 @@ sudo ./install-tl
 <li>最新版は<a href="https://github.com/jgm/pandoc/releases/">Github</a>から入手可能</li>
 <li>debファイルをダウンロード</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">wget https://github.com/jgm/pandoc/releases/download/2.14.0.1/pandoc-2.14.0.1-1-amd64.deb
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://github.com/jgm/pandoc/releases/download/2.14.0.1/pandoc-2.14.0.1-1-amd64.deb
+</span></span></code></pre></div><ul>
 <li>インストールする</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo apt install ./pandoc-2.14.0.1-1-amd64.deb
-</code></pre></div><div class="gdoc-page__anchorwrap"><h3 id="pandoc-crossrefのインストール">Pandoc-crossrefのインストール<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#pandoc-crossrefのインストール" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Pandoc-crossrefのインストール" href="#pandoc-crossrefのインストール"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install ./pandoc-2.14.0.1-1-amd64.deb
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h3 id="pandoc-crossrefのインストール">Pandoc-crossrefのインストール<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#pandoc-crossrefのインストール" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Pandoc-crossrefのインストール" href="#pandoc-crossrefのインストール"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <ul>
 <li>Pandoc-crossrefはPandoc本体に対応したバージョンを使う
 <ul>
@@ -833,16 +833,16 @@ sudo ./install-tl
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.11.0a/pandoc-crossref-Linux.tar.xz
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.11.0a/pandoc-crossref-Linux.tar.xz
+</span></span></code></pre></div><ul>
 <li>解凍</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">tar -xf pandoc-crossref-Linux.tar.xz
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tar -xf pandoc-crossref-Linux.tar.xz
+</span></span></code></pre></div><ul>
 <li>ファイルを/usr/bin に移動</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo mv pandoc-crossref /usr/bin
-</code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="補足やっぱり秀丸が良いってときは">補足：やっぱり秀丸が良いってときは？<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#補足やっぱり秀丸が良いってときは" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 補足：やっぱり秀丸が良いってときは？" href="#補足やっぱり秀丸が良いってときは"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mv pandoc-crossref /usr/bin
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="補足やっぱり秀丸が良いってときは">補足：やっぱり秀丸が良いってときは？<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#補足やっぱり秀丸が良いってときは" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 補足：やっぱり秀丸が良いってときは？" href="#補足やっぱり秀丸が良いってときは"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <ul>
 <li>秀丸＋祝鳥＋Sumatra PDFは論文執筆環境としてわたしも長らくお世話になってきた
 <ul>
@@ -877,15 +877,15 @@ sudo ./install-tl
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">FILEPATH</span><span class="o">=</span><span class="k">$(</span>wslpath <span class="nv">$1</span><span class="k">)</span> 
-<span class="nv">array</span><span class="o">=(</span><span class="k">$(</span>grep <span class="s2">&#34;/mnt/&#34;</span> <span class="nv">$FILEPATH</span><span class="k">)</span><span class="o">)</span> 
-<span class="k">for</span> i in <span class="si">${</span><span class="nv">array</span><span class="p">[@]</span><span class="si">}</span>
-<span class="k">do</span>
-<span class="nv">FNL</span><span class="o">=</span><span class="si">${</span><span class="nv">i</span><span class="p">##*:</span><span class="si">}</span>
-<span class="nv">FNW</span><span class="o">=</span><span class="k">$(</span>wslpath -m  <span class="si">${</span><span class="nv">FNL</span><span class="p">##*:</span><span class="si">}</span><span class="k">)</span>
-sed -i -e <span class="s2">&#34;s|</span><span class="nv">$FNL</span><span class="s2">|</span><span class="nv">$FNW</span><span class="s2">|&#34;</span> <span class="nv">$FILEPATH</span>
-<span class="k">done</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">FILEPATH</span><span class="o">=</span><span class="k">$(</span>wslpath <span class="nv">$1</span><span class="k">)</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">array</span><span class="o">=(</span><span class="k">$(</span>grep <span class="s2">&#34;/mnt/&#34;</span> <span class="nv">$FILEPATH</span><span class="k">)</span><span class="o">)</span> 
+</span></span><span class="line"><span class="cl"><span class="k">for</span> i in <span class="si">${</span><span class="nv">array</span><span class="p">[@]</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span>
+</span></span><span class="line"><span class="cl"><span class="nv">FNL</span><span class="o">=</span><span class="si">${</span><span class="nv">i</span><span class="p">##*:</span><span class="si">}</span>
+</span></span><span class="line"><span class="cl"><span class="nv">FNW</span><span class="o">=</span><span class="k">$(</span>wslpath -m  <span class="si">${</span><span class="nv">FNL</span><span class="p">##*:</span><span class="si">}</span><span class="k">)</span>
+</span></span><span class="line"><span class="cl">sed -i -e <span class="s2">&#34;s|</span><span class="nv">$FNL</span><span class="s2">|</span><span class="nv">$FNW</span><span class="s2">|&#34;</span> <span class="nv">$FILEPATH</span>
+</span></span><span class="line"><span class="cl"><span class="k">done</span>
+</span></span></code></pre></div>
 
     </article>
 
@@ -933,7 +933,7 @@ sed -i -e <span class="s2">&#34;s|</span><span class="nv">$FNL</span><span class
 
 
 
-<script defer src="/public/js/en.search.min.f123a6fa1e50dc4a189b0cd83dc30dbc50187578d29d9e5ddb0eab87af2a51a8.js"></script>
+<script defer src="/public/js/en.search.min.73574bd98e3ecb463f27c8bb9613e9d21e744147a08b4a3b676799dde5c2b490.js"></script>
 
 
 
