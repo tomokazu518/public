@@ -5,8 +5,7 @@ weight: 100
 
 ## はじめに
 
-StataのLinux版はWSLでも使うことができる。Linux版はCUIで使うこともできるし，GUIも普通に動く。
-いや，Windowsで動かせばいいでしょって気もするが，処理速度が速い(かもしれない)とか，RStudioやJupyter notebookでStataを使うとか，あるいは将来的にWindowsをあきらめてLinuxに移行したいという場合には役立つかもしれない。
+StataのLinux版はWSLでも使うことができる。Linux版はCUIで使うこともできるし，GUIも普通に動く。とくにWindows版のStataで困っていなければまったく必要ない。個人的には，シェルやRStudioからStataのコードを実行できるのが便利。Jupyter notebookでも使える。
 
 ## Stataのインストール
 
@@ -14,8 +13,7 @@ WSLにLinux版Stataをインストールする方法は，[公式ページ](http
 ただし，足りないパッケージがあって起動しないので，libtinfoとlibncursesをインストールしておく。
 
  ```bash
-sudo apt install -y libtinfo5
-sudo apt install -y libncurses5
+sudo apt install -y libtinfo5 libncurses5
  ```
 
 上記の公式ページの通りにインストールを実行，終わったら画面に表示される指示にしたがい，(rootのままで)stinitを実行する。
@@ -32,7 +30,7 @@ WSLでもGUIが使える。ただし，libgtk2.0-0というパッケージが足
 sudo apt install libgtk2.0-0
 ```
 
-Stataを起動するには，以下のコマンドを実行(わたしのライセンスはMPだが，全部インストールされた)。
+Stataを起動するには，/usr/local/stata17/にインストールされた以下のコマンドを実行(わたしのライセンスはMPだが，全部インストールされた)。
 
 |バージョン|CUI起動コマンド|GUI起動コマンド|
 |-|-|-|
@@ -40,11 +38,13 @@ Stataを起動するには，以下のコマンドを実行(わたしのライ�
 |Stata SE|stata-se|xstata-se|
 |Stata MP|stata-mp|xstata-mp|
 
-/usr/local/stata17にPathを通しておくと便利かもしれない。
+/usr/local/stata17にPathを通すか，エイリアスを作成しておくと便利。あと，rootになっているついでに，Stataを起動してupdate allしておくと良い。
+
+## RStudioでStataを使う
+
+個人的にStataのDoファイル・エディタはあまりしっくりこないので，RStudioを使っている。RStudioのターミナルでStataを起動しておいて，エディタの右下にある言語を"Shell"に設定すれば，Ctrl+EnterでDoファイルを1行実行して次の行に移動できる。
 
 ## Jupyter notebookでStataを使う
-
-個人的にStataのDoファイル・エディタはどうもしっくりこないので，Jupyter notebookを併用している。VSCodeで実行しながらコードを書くことができるので便利。
 
 PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使うと良いかもしれない。
 
@@ -52,7 +52,7 @@ PythonなどでJupyter notebookを使っているのであれば，StataもJupyt
 
 たぶんAnacondaとかJupyter Labとかフルセットの環境を構築した方が良いと思うが，ここでは必要最低限でいきたい。
 
-まず，Pythonのパッケージ・マネージャであるpipをインストールする(WSLのUbuntu 22.04にはpython3は入っていたが，pip3は入っていなかった)。
+もしPythonのパッケージ・マネージャであるpipがインストールされていなければ，インストールする。
 
 ```bash
 sudo apt install python3-pip

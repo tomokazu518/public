@@ -109,23 +109,6 @@ Markdownを書くためのエディタ メモ帳でも書くことはできる �
     </item>
     
     <item>
-      <title>統計分析ソフトについてのメモ</title>
-      <link>http://tomokazu518.github.io/public/PC/stat/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://tomokazu518.github.io/public/PC/stat/</guid>
-      <description>統計分析ソフトの必要性 統計データを分析するためには，ソフトウェアが必要
-統計分析のための専門的なソフトウェアを使えることは，今後の社会において求められる重要なスキル 統計分析のためのソフトウェアには，有償・無償ともにさまざまなものがある Excelとの違い
-機能 Excelは統計を分析するためのソフトウェアではないのでできることが限られている 統計分析ソフトではさまざまな手法を簡単に実行可能 再現性 Excelによる分析は，再現性を担保するのが難しい(Excelファイルを見てもデータの加工や分析の過程がわからない) 統計分析ソフトはコード(プログラム)を見れば分析の過程が明らか 無償の統計分析ソフト gretl gretlは，GUIで操作できるため，初心者でもわかりやすくて使いやすい。よく使われる計量モデルは一通り推定可能。グラフはgnuplotというメジャーなグラフ描画ソフトが組み込まれている。ただし，できることは限られているので，本格的に学びたいのであればRの方がおすすめ。ドキュメント類は英語だが，メニューなどは日本語化されている。
-使い方を解説した書籍やウェブページもいくつかあるが，「日本の人事を科学する」gretlテキストがわかりやすい。
-R Rは最もよく利用されている統計分析の専用ソフト(だと思う)。非常に多くのパッケージが開発されており，ほぼ何でもできる。RStudioを使うことで，非常に使いやすく強力な分析環境を整えることができる。
-RおよびRStudioのインストール方法については，高知工科大学の矢内勇生先生のページで非常に丁寧に解説されている。
-R(とくにtidyverse)の使い方については，Rによる計量政治学がおすすめ。実際にRを操作しながら学んでいくことができる。また，社会科学のためのデータ分析入門は，Rで実際の研究で使われたデータを分析しながら分析方法を学ぶことができる非常に良いテキスト。
-インターネットで読めるものとしては，以下のページがわかりやすい。
-森知晴先生(立命館大学)の卒業論文のためのR入門 土居翔平先生(北海道大学)のRで計量政治学入門 </description>
-    </item>
-    
-    <item>
       <title>労働時間の変化</title>
       <link>http://tomokazu518.github.io/public/statistics/working_hours/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -176,21 +159,21 @@ geojsonファイルに都道府県単位のデータをマージすることで�
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://tomokazu518.github.io/public/PC/Stata/</guid>
-      <description>はじめに StataのLinux版はWSLでも使うことができる。Linux版はCUIで使うこともできるし，GUIも普通に動く。 いや，Windowsで動かせばいいでしょって気もするが，処理速度が速い(かもしれない)とか，RStudioやJupyter notebookでStataを使うとか，あるいは将来的にWindowsをあきらめてLinuxに移行したいという場合には役立つかもしれない。
+      <description>はじめに StataのLinux版はWSLでも使うことができる。Linux版はCUIで使うこともできるし，GUIも普通に動く。とくにWindows版のStataで困っていなければまったく必要ない。個人的には，シェルやRStudioからStataのコードを実行できるのが便利。Jupyter notebookでも使える。
 Stataのインストール WSLにLinux版Stataをインストールする方法は，公式ページに説明されている通り。 ただし，足りないパッケージがあって起動しないので，libtinfoとlibncursesをインストールしておく。
-sudo apt install -y libtinfo5 sudo apt install -y libncurses5 上記の公式ページの通りにインストールを実行，終わったら画面に表示される指示にしたがい，(rootのままで)stinitを実行する。
+sudo apt install -y libtinfo5 libncurses5 上記の公式ページの通りにインストールを実行，終わったら画面に表示される指示にしたがい，(rootのままで)stinitを実行する。
 /usr/local/stata17/stinit 指示にしたがいながらライセンス情報を入力すればOk。
 WSLでもGUIが使える。ただし，libgtk2.0-0というパッケージが足りないのでインストールしておく。
-sudo apt install libgtk2.0-0 Stataを起動するには，以下のコマンドを実行(わたしのライセンスはMPだが，全部インストールされた)。
-バージョン CUI起動コマンド GUI起動コマンド Stata BE stata xstata Stata SE stata-se xstata-se Stata MP stata-mp xstata-mp /usr/local/stata17にPathを通しておくと便利かもしれない。
-Jupyter notebookでStataを使う 個人的にStataのDoファイル・エディタはどうもしっくりこないので，Jupyter notebookを併用している。VSCodeで実行しながらコードを書くことができるので便利。
-PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使うと良いかもしれない。
+sudo apt install libgtk2.0-0 Stataを起動するには，/usr/local/stata17/にインストールされた以下のコマンドを実行(わたしのライセンスはMPだが，全部インストールされた)。
+バージョン CUI起動コマンド GUI起動コマンド Stata BE stata xstata Stata SE stata-se xstata-se Stata MP stata-mp xstata-mp /usr/local/stata17にPathを通すか，エイリアスを作成しておくと便利。あと，rootになっているついでに，Stataを起動してupdate allしておくと良い。
+RStudioでStataを使う 個人的にStataのDoファイル・エディタはあまりしっくりこないので，RStudioを使っている。RStudioのターミナルでStataを起動しておいて，エディタの右下にある言語を&amp;quot;Shell&amp;quot;に設定すれば，Ctrl+EnterでDoファイルを1行実行して次の行に移動できる。
+Jupyter notebookでStataを使う PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使うと良いかもしれない。
 Jupyter ntoebookのインストール たぶんAnacondaとかJupyter Labとかフルセットの環境を構築した方が良いと思うが，ここでは必要最低限でいきたい。
-まず，Pythonのパッケージ・マネージャであるpipをインストールする(WSLのUbuntu 22.04にはpython3は入っていたが，pip3は入っていなかった)。
+もしPythonのパッケージ・マネージャであるpipがインストールされていなければ，インストールする。
 sudo apt install python3-pip pipを使って，Jupyter notebookをインストール。
 pip3 install notebook ~/.local/bin にインストールされるので，Pathが通っていることを確認しておく。
 stata_kernelのインストール 次に，Jupyter notebookでStataを操作するためのカーネルをインストール。
-pip3 install stata_kernel python -m stata_kernel.</description>
+pip3 install stata_kernel python -m stata_kernel.install (2022.</description>
     </item>
     
     <item>
