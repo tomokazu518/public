@@ -8,7 +8,7 @@ weight: 10
 
 ## WSL2？
 
-- WSLはWindows上(仮想環境)で動作するLinux
+- WSLはLinuxのためのWindows上の仮想環境
 - LinuxのツールをWindowsから使いたいときに便利
   - LatexのコンパイルなどはLinuxの方が速いし安定しているのでWSLでやるのがおすすめ
   - RStudio Serverも動く
