@@ -86,13 +86,13 @@ wsl uplatex sample.tex
 wget https://github.com/jgm/pandoc/releases/download/2.14.0.1/pandoc-2.14.0.1-1-amd64.deb
 ```
 
-補足：MacでおなじみのhomebrewはLinuxでも使える。homebrewのpandocは新しいので，homebrewを使ってインストールするのも良いと思う。アップデートが楽。
-
 - インストールする
 
 ```bash
 sudo apt install ./pandoc-2.14.0.1-1-amd64.deb
 ```
+
+補足：MacでおなじみのhomebrewはLinuxでも使える。homebrewのpandocは新しいので，homebrewを使ってインストールするのも良いと思う。アップデートが楽。下のPandoc-crossrefもhomebrewでインストール可能。
 
 ### Pandoc-crossrefのインストール
 
@@ -148,3 +148,4 @@ FNW=$(wslpath -m  ${FNL##*:})
 sed -i -e "s|$FNL|$FNW|" $FILEPATH
 done
 ```
+
