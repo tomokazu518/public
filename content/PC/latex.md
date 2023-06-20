@@ -8,19 +8,19 @@ weight: 20
 - WSLを使えば仮想環境のLinuxでtexのコンパイルを行うことが可能
   - Windowsでもtex環境は構築できるがコンパイルが遅い
   - Windowsは文字コードの問題など，ならではのトラブルも多い
-  - とはいえ文書を編集するときは使い慣れたWindows環境の方が捗るので，ソースの編集はWindows上で行い，コンパイルはWSLで行う
+  - とはいえ文書を編集するときは使い慣れたWindows環境の方が捗るので，ソースの編集はWindows上で行い，コンパイルはWSLで行うという話
 - PandocもWSLに入れておいた方が便利
   - Pandocはmarkdownで書いたファイルをいろいろな形式(PDF, Word, tex, htmlなどなど)に変換できるコンバータ
   - markdownはtexに比べてシンプルで可読性が高い  
-  →基本的に執筆はmarkdownで行って，texに変換してPDF化するのが良いと思う
-  - 数式や図表の挿入，文献参照(bibtex)などかなりの部分はmarkdownでできるし，texに変換してPDF化可能
+  →基本的に執筆はmarkdownで行って，tex経由でPDF化するのが良いと思う
+  - 数式や図表の挿入，文献参照(bibtex)などかなりの部分はmarkdownでも記述できる
   - 相互参照(texの\label, \ref)はpandoc-crossrefというフィルターをインストールすれば可能
 
 ## Latex
 
 ### Tex Liveのインストール
 
-- libfontconfigパッケージをインストールしておく
+- fontconfigパッケージをインストールしておく
 
 ```bash
 sudo apt intall libfontconfig
@@ -36,7 +36,7 @@ sudo apt intall libfontconfig
  sudo mount -t drvfs G: /mnt/g
 ```
 
-- マウントしたディレクトリに移動して，インストーラを実行((デフォルト設定で問題ないので"I"を入力してインストールを開始)
+- マウントしたディレクトリに移動して，インストーラを実行(デフォルト設定で問題ないので"I"を入力してインストールを開始)
 
 ```bash
 cd /mnt/g
@@ -70,7 +70,7 @@ wsl uplatex sample.tex
 
 - WSLを使うのであれば，Visual Studio Codeが便利
   - VSCodeがLinuxのインターフェイスになる(VSCodeを使って，Linux上のファイルの編集やコンパイラの呼び出しなどができる)
-  - VSCodeはローカルのWSLだけでなく，リモート環境にもSSHで接続できるようになった
+  - VSCodeはローカルのWSLだけでなく，リモート環境にもSSHで接続でき
   - 非力なラップトップでもVSCodeだけインストールしておけば，自宅などのPCにリモートアクセスしてソースの編集やコンパイルなどが可能
 - VSCode用拡張機能のTex Workshopが便利
 
@@ -78,12 +78,15 @@ wsl uplatex sample.tex
 
 ### Pandocのインストール
 
+- UbuntuのaptでインストールされるPandocはかなり古い
 - 最新版は[Github](https://github.com/jgm/pandoc/releases/)から入手可能
 - debファイルをダウンロード
 
 ```bash
 wget https://github.com/jgm/pandoc/releases/download/2.14.0.1/pandoc-2.14.0.1-1-amd64.deb
 ```
+
+補足：MacでおなじみのhomebrewはLinuxでも使える。homebrewのpandocは新しいので，homebrewを使ってインストールするのも良いと思う。アップデートが楽。
 
 - インストールする
 
@@ -112,13 +115,13 @@ tar -xf pandoc-crossref-Linux.tar.xz
 sudo mv pandoc-crossref /usr/bin
 ```
 
-## 補足：やっぱり秀丸が良いってときは？
+## 補足：やっぱり秀丸が良い？
 
-- 秀丸＋祝鳥＋Sumatra PDFは論文執筆環境としてわたしも長らくお世話になってきた
-  - 秀丸は起動も速いし，動作も軽い
+- [秀丸](https://hide.maruo.co.jp/software/hidemaru.html)＋[祝鳥](https://www.ms.u-tokyo.ac.jp/~abenori/soft/fortex.html)＋[Sumatra PDF](https://www.sumatrapdfreader.org/free-pdf-reader)は論文執筆環境としてわたしも長らくお世話になってきた
+  - 秀丸は起動も速いし動作が軽い(VSCodeは少し重い)
   - 祝鳥はWSL上のコンパイラを指定できる？(ちゃんと調べていないので不明)
   - 補完機能などは祝鳥を使い，コンパイルは自作マクロ(latexmkを実行するだけ)で良いかな  
-  - PDFファイルはSumatra PDFで見る(ファイルが更新されると勝手に読み込み直してくれるので便利)
+  - PDFファイルはSumatra PDFで見る(Acrobatとは比較にならないくらい軽い上に，ファイルがロックされないのでPDFを開いたままTexのコンパイルが可能，しかもファイルが更新されると勝手に読み込み直してくれるので便利)
 - WindowsのTex専用エディタ＋WSL上のコンパイラ環境なら，Texmakerがおすすめ
   - コンパイラの設定で，すべてのコマンドの前に"ubuntu run "を付ければwslにインストールしたTexでコンパイルされる
   - 日本語ならLatexに"ubuntu run uplatex \%.tex"，Bib(la)texに"ubuntu run upbibtex \%"，Dvipdfmに"ubuntu run dvipdfmx \%.dvi"くらい設定すれば十分

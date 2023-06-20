@@ -754,15 +754,15 @@ if (!doNotTrack) {
 <ul>
 <li>Windowsでもtex環境は構築できるがコンパイルが遅い</li>
 <li>Windowsは文字コードの問題など，ならではのトラブルも多い</li>
-<li>とはいえ文書を編集するときは使い慣れたWindows環境の方が捗るので，ソースの編集はWindows上で行い，コンパイルはWSLで行う</li>
+<li>とはいえ文書を編集するときは使い慣れたWindows環境の方が捗るので，ソースの編集はWindows上で行い，コンパイルはWSLで行うという話</li>
 </ul>
 </li>
 <li>PandocもWSLに入れておいた方が便利
 <ul>
 <li>Pandocはmarkdownで書いたファイルをいろいろな形式(PDF, Word, tex, htmlなどなど)に変換できるコンバータ</li>
 <li>markdownはtexに比べてシンプルで可読性が高い<br>
-→基本的に執筆はmarkdownで行って，texに変換してPDF化するのが良いと思う</li>
-<li>数式や図表の挿入，文献参照(bibtex)などかなりの部分はmarkdownでできるし，texに変換してPDF化可能</li>
+→基本的に執筆はmarkdownで行って，tex経由でPDF化するのが良いと思う</li>
+<li>数式や図表の挿入，文献参照(bibtex)などかなりの部分はmarkdownでも記述できる</li>
 <li>相互参照(texの\label, \ref)はpandoc-crossrefというフィルターをインストールすれば可能</li>
 </ul>
 </li>
@@ -770,7 +770,7 @@ if (!doNotTrack) {
 <div class="gdoc-page__anchorwrap"><h2 id="latex">Latex<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#latex" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Latex" href="#latex"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <div class="gdoc-page__anchorwrap"><h3 id="tex-liveのインストール">Tex Liveのインストール<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#tex-liveのインストール" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Tex Liveのインストール" href="#tex-liveのインストール"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <ul>
-<li>libfontconfigパッケージをインストールしておく</li>
+<li>fontconfigパッケージをインストールしておく</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt intall libfontconfig
 </span></span></code></pre></div><ul>
@@ -782,7 +782,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> sudo mkdir /mnt/g
 </span></span><span class="line"><span class="cl"> sudo mount -t drvfs G: /mnt/g
 </span></span></code></pre></div><ul>
-<li>マウントしたディレクトリに移動して，インストーラを実行((デフォルト設定で問題ないので&quot;I&quot;を入力してインストールを開始)</li>
+<li>マウントしたディレクトリに移動して，インストーラを実行(デフォルト設定で問題ないので&quot;I&quot;を入力してインストールを開始)</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> /mnt/g
 </span></span><span class="line"><span class="cl">sudo ./install-tl
@@ -808,7 +808,7 @@ if (!doNotTrack) {
 <li>WSLを使うのであれば，Visual Studio Codeが便利
 <ul>
 <li>VSCodeがLinuxのインターフェイスになる(VSCodeを使って，Linux上のファイルの編集やコンパイラの呼び出しなどができる)</li>
-<li>VSCodeはローカルのWSLだけでなく，リモート環境にもSSHで接続できるようになった</li>
+<li>VSCodeはローカルのWSLだけでなく，リモート環境にもSSHで接続でき</li>
 <li>非力なラップトップでもVSCodeだけインストールしておけば，自宅などのPCにリモートアクセスしてソースの編集やコンパイルなどが可能</li>
 </ul>
 </li>
@@ -817,11 +817,13 @@ if (!doNotTrack) {
 <div class="gdoc-page__anchorwrap"><h2 id="pandoc">Pandoc<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#pandoc" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Pandoc" href="#pandoc"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <div class="gdoc-page__anchorwrap"><h3 id="pandocのインストール">Pandocのインストール<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#pandocのインストール" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Pandocのインストール" href="#pandocのインストール"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <ul>
+<li>UbuntuのaptでインストールされるPandocはかなり古い</li>
 <li>最新版は<a href="https://github.com/jgm/pandoc/releases/">Github</a>から入手可能</li>
 <li>debファイルをダウンロード</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://github.com/jgm/pandoc/releases/download/2.14.0.1/pandoc-2.14.0.1-1-amd64.deb
-</span></span></code></pre></div><ul>
+</span></span></code></pre></div><p>補足：MacでおなじみのhomebrewはLinuxでも使える。homebrewのpandocは新しいので，homebrewを使ってインストールするのも良いと思う。アップデートが楽。</p>
+<ul>
 <li>インストールする</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install ./pandoc-2.14.0.1-1-amd64.deb
@@ -842,14 +844,14 @@ if (!doNotTrack) {
 <li>ファイルを/usr/bin に移動</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo mv pandoc-crossref /usr/bin
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="補足やっぱり秀丸が良いってときは">補足：やっぱり秀丸が良いってときは？<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#補足やっぱり秀丸が良いってときは" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 補足：やっぱり秀丸が良いってときは？" href="#補足やっぱり秀丸が良いってときは"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="補足やっぱり秀丸が良い">補足：やっぱり秀丸が良い？<a data-clipboard-text="http://tomokazu518.github.io/public/PC/latex/#補足やっぱり秀丸が良い" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 補足：やっぱり秀丸が良い？" href="#補足やっぱり秀丸が良い"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <ul>
-<li>秀丸＋祝鳥＋Sumatra PDFは論文執筆環境としてわたしも長らくお世話になってきた
+<li><a href="https://hide.maruo.co.jp/software/hidemaru.html">秀丸</a>＋<a href="https://www.ms.u-tokyo.ac.jp/~abenori/soft/fortex.html">祝鳥</a>＋<a href="https://www.sumatrapdfreader.org/free-pdf-reader">Sumatra PDF</a>は論文執筆環境としてわたしも長らくお世話になってきた
 <ul>
-<li>秀丸は起動も速いし，動作も軽い</li>
+<li>秀丸は起動も速いし動作が軽い(VSCodeは少し重い)</li>
 <li>祝鳥はWSL上のコンパイラを指定できる？(ちゃんと調べていないので不明)</li>
 <li>補完機能などは祝鳥を使い，コンパイルは自作マクロ(latexmkを実行するだけ)で良いかな</li>
-<li>PDFファイルはSumatra PDFで見る(ファイルが更新されると勝手に読み込み直してくれるので便利)</li>
+<li>PDFファイルはSumatra PDFで見る(Acrobatとは比較にならないくらい軽い上に，ファイルがロックされないのでPDFを開いたままTexのコンパイルが可能，しかもファイルが更新されると勝手に読み込み直してくれるので便利)</li>
 </ul>
 </li>
 <li>WindowsのTex専用エディタ＋WSL上のコンパイラ環境なら，Texmakerがおすすめ

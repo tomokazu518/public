@@ -757,18 +757,10 @@ if (!doNotTrack) {
           <ul>
             <li><a href="#r本体のインストール">R本体のインストール</a></li>
             <li><a href="#rstudio-serverのインストール">RStudio Serverのインストール</a></li>
-            <li><a href="#rstudio-serverでtex-liveを使う">RStudio ServerでTex Liveを使う</a></li>
+            <li><a href="#tidyverseをインストール">tidyverseをインストール</a></li>
           </ul>
         </li>
-        <li><a href="#通信を暗号化する">通信を暗号化する</a>
-          <ul>
-            <li><a href="#リバースプロキシ">リバースプロキシ</a></li>
-            <li><a href="#証明書の作成">証明書の作成</a></li>
-            <li><a href="#nginxの設定">Nginxの設定</a></li>
-          </ul>
-        </li>
-        <li><a href="#クライアントマシンからアクセスできるように設定">クライアントマシンからアクセスできるように設定</a></li>
-        <li><a href="#lanの外から使う">LANの外から使う</a></li>
+        <li><a href="#通信を暗号化する">通信を暗号化する</a></li>
       </ul></nav><hr></div>
 
 
@@ -783,15 +775,18 @@ if (!doNotTrack) {
 <li>iPadやスマホでも使うことができる(実際に使うかどうかは別として)</li>
 </ul>
 </li>
+<li>RとRStudioはWindowsで使うといろいろな問題が起きるので，WSLにRStudioをインストールして使うのがおすすめ</li>
 </ul>
 <div class="gdoc-page__anchorwrap"><h2 id="wslへのインストール">WSLへのインストール<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#wslへのインストール" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor WSLへのインストール" href="#wslへのインストール"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <div class="gdoc-page__anchorwrap"><h3 id="r本体のインストール">R本体のインストール<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#r本体のインストール" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor R本体のインストール" href="#r本体のインストール"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <ul>
-<li>基本的には，<a href="https://support.rstudio.com/hc/en-us/articles/360049776974-Using-RStudio-Server-in-Windows-WSL2">ここ</a>で解説されている通り</li>
-<li>まず，証明書とレポジトリを追加(jammyの部分はUbuntuのバージョンによって変更)</li>
+<li>基本的には，<a href="https://support.rstudio.com/hc/en-us/articles/360049776974-Using-RStudio-Server-in-Windows-WSL2">RStudio公式</a>で解説されている通り</li>
+<li><a href="https://shohei-doi.github.io/quant_polisci/wsl-rstudio.html">Rで計量政治学入門</a>にも解説がある<br>
+→こっちの方が良いと思う</li>
+<li>まず，証明書とレポジトリを追加</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-</span></span><span class="line"><span class="cl">sudo add-apt-repository <span class="s1">&#39;deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/&#39;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc <span class="p">|</span> sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.a
+</span></span><span class="line"><span class="cl">sudo add-apt-repository <span class="s1">&#39;deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/&#39;</span>
 </span></span></code></pre></div><ul>
 <li>RおよびRStudio Serverを使うために必要なパッケージをインストール</li>
 </ul>
@@ -800,219 +795,32 @@ if (!doNotTrack) {
 <ul>
 <li>Ubuntu用のRStudio Serverをダウンロード(jammyの部分はUbuntuのバージョンによって変更)</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://rstudio.org/download/latest/stable/server/jammy/rstudio-server-latest-amd64.deb
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://rstudio.org/download/latest/stable/server/<span class="k">$(</span>lsb_release -cs<span class="k">)</span>/rstudio-server-latest-amd64.deb
 </span></span></code></pre></div><ul>
-<li>RStudio Serverのインストール( “Couldn’t find an alternative telinit implementation to spawn.”というメッセージが出るが，無視してよいとのこと)</li>
+<li>RStudio Serverのインストール</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo gdebi rstudio-server-latest-amd64.deb
 </span></span></code></pre></div><ul>
-<li>RStudio Serverを起動(毎回起動させるのが面倒であれば，Windowsが起動したときにこのコマンドを実行するようタスクスケジューラに登録するとよい)</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo rstudio-server start
-</span></span></code></pre></div><ul>
+<li>インストールが完了するとsystemdに登録されるので，WSLを起動すれば自動的にRStudio Serverがバックグラウンドで動き始める</li>
 <li><a href="http://localhost:8787">http://localhost:8787</a>にアクセスしてRStudio Serverが動いていることを確認</li>
-<li>ユーザー名とパスワードは，Ubuntuに設定したものを使う</li>
-<li>LAN内のほかのPCやインターネット経由でもアクセスできるようにすれば便利だが，このまま外部からアクセスできるようにするのは危険</li>
+<li>ユーザー名とパスワードは，Ubuntuに設定したもの</li>
+<li>Chromeでショートカットを作成しウィンドウで起動するようにすれば，デスクトップ版のRStudioとほぼ同じように使える</li>
+<li>LAN内のほかのPCやインターネット経由でもアクセスできるようにすれば便利だが，このまま外部からアクセスできるようにするのは危険なので注意</li>
 </ul>
-<div class="gdoc-page__anchorwrap"><h3 id="rstudio-serverでtex-liveを使う">RStudio ServerでTex Liveを使う<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#rstudio-serverでtex-liveを使う" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor RStudio ServerでTex Liveを使う" href="#rstudio-serverでtex-liveを使う"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<div class="gdoc-page__anchorwrap"><h3 id="tidyverseをインストール">tidyverseをインストール<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#tidyverseをインストール" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor tidyverseをインストール" href="#tidyverseをインストール"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <ul>
-<li>R MarkdownでPDFを作成するためには，Texが必要</li>
-<li>RStudioはTinyTexを推奨しているが，重複してインストールするのを避けたければTex Liveを使えばよい
-<ul>
-<li>Tex Liveをインストールしたときに，/usr/local/binにシンボリックリンクを張っておく</li>
-<li>Rの環境変数PATHに/usr/local/binを追加<br>
-→Rの起動時に毎回実行するように，.Rprofileにこの内容を追記しておくとよい(.RprofileはR起動時に実行されるファイルでホームフォルダにある，ない場合は新規に作成してこの内容を書いておく)</li>
+<li>Rにtidyverseパッケージをインストールするのに必要なパッケージをインストール</li>
 </ul>
-</li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install libcurl4-openssl-dev libxml2-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev
+</span></span></code></pre></div><ul>
+<li>わたしの場合は，上記だけでtidyverseをインストールすることができた</li>
+<li>足りないパッケージがある場合にはエラーメッセージを読んでインストールする</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">Sys.setenv</span><span class="p">(</span><span class="n">PATH</span> <span class="o">=</span> <span class="nf">paste</span><span class="p">(</span><span class="nf">Sys.getenv</span><span class="p">(</span><span class="s">&#34;PATH&#34;</span><span class="p">),</span> <span class="s">&#34;/usr/local/bin&#34;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#34;:&#34;</span><span class="p">))</span>
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="通信を暗号化する">通信を暗号化する<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#通信を暗号化する" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 通信を暗号化する" href="#通信を暗号化する"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<div class="gdoc-page__anchorwrap"><h3 id="リバースプロキシ">リバースプロキシ<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#リバースプロキシ" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor リバースプロキシ" href="#リバースプロキシ"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
-<ul>
-<li>localhostでも，httpでアクセスするとブラウザに&quot;このサイトへの接続は安全ではありません&quot;とセキュリティの警告が表示される(localで使う分にはこのままでも良いかもしれないが，警告は消したい)
-<ul>
-<li>通信をhttpsで行うために，Nginxのリバースプロキシを利用する</li>
-<li>クライアント(ブラウザ)からはNginxを介してRStudio Serverに接続，クライアントとNginxとの間はhttpsで通信</li>
-</ul>
-</li>
-<li>Nginxのインストール</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install nginx
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h3 id="証明書の作成">証明書の作成<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#証明書の作成" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 証明書の作成" href="#証明書の作成"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
-<ul>
-<li>暗号化された通信を行うためには，証明書が必要</li>
-<li>mkcertというツールを使えば，簡単に証明書が作れる</li>
-<li>クライアント側(Windows)にmkcertをインストールして証明書を発行し，WSLのNginxで利用する
-<ul>
-<li>mkcertのインストールは，chocolateyを使うのが簡単</li>
-<li>chocolateyはWindowsのパッケージマネージャ，さまざまなソフトのインストールやアップデートが簡単にできるので，インストールしておくと良い</li>
-<li>chocolateyのインストールは<a href="https://chocolatey.org/install">ここ</a>を見て，powershell(管理者)でインストールコマンドを実行するだけ</li>
-</ul>
-</li>
-<li>Powershellでmkcertのインストール，ローカル認証局のインストール，localhostの証明書と鍵の作成</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl">  <span class="n">choco</span> <span class="n">install</span> <span class="n">mkcert</span> 
-</span></span><span class="line"><span class="cl">  <span class="n">mkcert</span> <span class="n">-install</span>
-</span></span><span class="line"><span class="cl">  <span class="n">mkcert</span> <span class="n">localhost</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>カレントディレクトリにlocalhost.pemとlocalhost-key.pemの2つのファイルが作成されるので，WSLでそれを/etc/nginx/sslに移動させる<br>
-→/etc/nginx/sslフォルダがない場合は作成する</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir /etc/nginx/ssl <span class="c1"># フォルダが存在しない場合は作成する</span>
-</span></span><span class="line"><span class="cl">sudo mv localhost.pem /etc/nginx/ssl/
-</span></span><span class="line"><span class="cl">sudo mv localhost-key.pem/etc/nginx/ssl/
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="gdoc-page__anchorwrap"><h3 id="nginxの設定">Nginxの設定<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#nginxの設定" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Nginxの設定" href="#nginxの設定"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
-<ul>
-<li>/etc/nginx/site-available内に下の内容でファイルを作成し，/etc/nginx/site-enabledにシンボリックリンクを作成</li>
-<li>ファイル名は何でもよいが，localhostとでもしておく</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo nano /etc/nginx/sites-available/localhost 
-</span></span><span class="line"><span class="cl"><span class="c1"># nanoで下の設定内容を貼り付けて保存</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="c1"># /etc/nginx/sites-enabledに移動して，作成したファイルのシンボリックリンクを作成</span>
-</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /etc/nginx/sites-enabled 
-</span></span><span class="line"><span class="cl">ln -s /etc/nginx/sites-available/localhost localhost
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-nginx" data-lang="nginx"><span class="line"><span class="cl"><span class="k">server</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">   <span class="c1"># 443ポート(https)へのアクセスを転送
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">   <span class="c1"># 証明書を設定
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">ssl_certificate</span>     <span class="s">/etc/nginx/ssl/localhost.pem</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kn">ssl_certificate_key</span> <span class="s">/etc/nginx/ssl/localhost-key.pem</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">   <span class="c1"># 転送先をhttps://localhost:8787に
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kn">location</span> <span class="s">/rstudio/</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="kn">rewrite</span> <span class="s">^/rstudio/(.*)</span>$ <span class="s">/</span><span class="nv">$1</span> <span class="s">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="kn">proxy_pass</span> <span class="s">http://localhost:8787</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="kn">proxy_redirect</span> <span class="s">http://localhost:8787/</span> <span class="nv">$scheme://$http_host/rstudio/</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="kn">proxy_http_version</span> <span class="mi">1</span><span class="s">.1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="kn">proxy_set_header</span> <span class="s">Upgrade</span> <span class="nv">$http_upgrade</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="kn">proxy_set_header</span> <span class="s">Connection</span> <span class="s">&#34;upgrade&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">      <span class="kn">proxy_read_timeout</span> <span class="s">20d</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>nginxを起動すれば， &ldquo;https://localhost/rstudio&rdquo; でRStudio Serverにアクセスできるようになる</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo service nginx start
-</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="クライアントマシンからアクセスできるように設定">クライアントマシンからアクセスできるように設定<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#クライアントマシンからアクセスできるように設定" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor クライアントマシンからアクセスできるように設定" href="#クライアントマシンからアクセスできるように設定"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<ul>
-<li>WSLにインストールしたRStudio Serverに，LAN内の別のPCからアクセスできるようにすることも可能</li>
-<li>しかし，WSL2のIPアドレスは起動するたびに変わる(ホストマシンからはlocalhostでアクセス可能)ので，ほかのマシンからアクセスするためにはポートフォワーディングを設定して，ホストマシンの特定のポートに対するアクセスをWSLに転送する必要がある</li>
-<li>ポートフォワーディングを設定するためのbatファイルを作成</li>
-</ul>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl"># WSLのIPアドレスの取得
-</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="k">/f</span> <span class="s2">&#34;tokens=* usebackq&#34;</span> <span class="se">%%</span>F <span class="k">in</span> <span class="p">(</span><span class="sb">`wsl --distribution Ubuntu --exec hostname --all-ip-addresses`</span><span class="p">)</span> <span class="k">do</span> <span class="k">set</span> <span class="nv">IP</span><span class="p">=</span><span class="se">%%</span>F 
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># ポート443をWSLのIPアドレスに転送(古い設定を削除後，新しいIPアドレスを設定)
-</span></span><span class="line"><span class="cl">netsh interface portproxy delete v4tov4 listenport=443 connectaddress=<span class="nv">%IP%</span>
-</span></span><span class="line"><span class="cl">netsh interface portproxy add v4tov4 listenport=443 connectaddress=<span class="nv">%IP%</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"># ついでにnginx, RStudio-serverもここで起動させる
-</span></span><span class="line"><span class="cl">ubuntu run -u root service nginx restart
-</span></span><span class="line"><span class="cl">ubuntu run -u root rstudio-server restart
-</span></span></code></pre></td></tr></table>
-</div>
-</div><ul>
-<li>サーバーPCの起動時に毎回このスクリプトを実行(Windowsのタスクスケジューラに登録すると良い)
-<ul>
-<li>トリガーはログオン時，ユーザーがログオンしているときのみ実行する，最上位の権限で実行するにチェックを入れる</li>
-</ul>
-</li>
-<li>これでLAN内からであれば，&ldquo;https://IPadress&rdquo; にアクセスして，RStudio Serverを使うことができる</li>
-<li>ただし，クライアントマシン側にも証明書をインストールしなければブラウザで警告が出る
-<ul>
-<li>mkcertの証明書はあくまでローカルでのテスト用なので，ホストマシン以外からもアクセスする場合に使うことは推奨しない</li>
-<li>Let&rsquo;s Encryptというサービスで正式な証明書を取得するのが良い<br>
-→ダイナミックDNSサービスの<a href="https://www.mydns.jp">mydns.jp</a>を利用すれば，固定IPなしでもLet&rsquo;s Encryptで証明書を取得できる</li>
-<li>とはいえ，このままインターネットからアクセスできるようにするのは危険すぎるので，VPNを使った方が良い</li>
-</ul>
-</li>
-</ul>
-<div class="gdoc-page__anchorwrap"><h2 id="lanの外から使う">LANの外から使う<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#lanの外から使う" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor LANの外から使う" href="#lanの外から使う"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<ul>
-<li>そのままインターネットからアクセスできるようにするのは危険なので，VPNを使う
-<ul>
-<li><a href="https://tailscale.com/">Tailscale</a>を使えば簡単にVPNを構築できる，しかも無料</li>
-<li><a href="https://ja.softether.org/">SoftEther</a>も比較的簡単，無料</li>
-</ul>
-</li>
-<li>サーバーを常時起動していると電気代とかが気になる？
-<ul>
-<li>電気代がほとんどかからないRaspberry PIにTailscaleかSoftEtherを入れて常時起動しておき，Raspberry PIからWake on Lanでサーバーの電源を入れると良い</li>
-<li>なんならRaspberry PIでRStudio Serverホストしてもいいかも(Raspberry PI 4とかだと十分に使えそうだけど，試してない)</li>
-</ul>
-</li>
-</ul>
+<div class="gdoc-page__anchorwrap"><h2 id="通信を暗号化する">通信を暗号化する<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#通信を暗号化する" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 通信を暗号化する" href="#通信を暗号化する"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>前はいろいろ具体的な方法を書いていたが，わたし自信コンピュータにそれほど詳しいわけではなく，セキュリティ上問題がある気がするので，概要にとどめておくことにした。</p>
+<p>Chromeでは以前localhostでもhttpでアクセスするとブラウザに&quot;このサイトへの接続は安全ではありません&quot;とセキュリティの警告が表示されていて邪魔たったが，現在は表示されないので，LANやインターネット上のほかのマシンからアクセスする場合以外は暗号化する必要はないと思う。</p>
+<p>ほかのマシンからアクセスする際に通信を暗号化する方法はいろいろあるが，一番手間がかからないのはSSHポート転送を使う方法。アクセス先がlocalhostになるので，ブラウザの警告も表示されない。</p>
+<p>インターネットに直接公開するのはあり得ないと思うが，VPNでの利用を前提にNginxなどのリバースプロキシを使うのも良い。証明書は<a href="https://letsencrypt.org/ja/">Let&rsquo;s encrypt</a>で取得できる。ドメイン名が必要だが，<a href="https://www.mydns.jp/">MyDNS.JP</a>のダイナミックDNSでOk。MyDNSでLet&rsquo;s encryptの証明書を取得する<a href="https://github.com/disco-v8/DirectEdit/">DirectEdit</a>というスクリプトが公開されている。</p>
 
 
     </article>

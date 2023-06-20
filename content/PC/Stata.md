@@ -6,7 +6,7 @@ weight: 100
 ## はじめに
 
 StataのLinux版はWSLでも使うことができる。Linux版はCUIで使うこともできるし，GUIも普通に動く。
-いや，Windowsで動かせばいいでしょって気もするが，処理速度が速い(かもしれない)とか，Jupyter notebookでStataを使うとか，あるいは将来的にはWindowsをあきらめてLinuxに移行したいという場合には役立つかもしれない。
+いや，Windowsで動かせばいいでしょって気もするが，処理速度が速い(かもしれない)とか，RStudioやJupyter notebookでStataを使うとか，あるいは将来的にWindowsをあきらめてLinuxに移行したいという場合には役立つかもしれない。
 
 ## Stataのインストール
 

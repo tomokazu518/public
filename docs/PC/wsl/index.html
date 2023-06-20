@@ -755,16 +755,20 @@ if (!doNotTrack) {
         <li><a href="#wsl2">WSL2？</a></li>
         <li><a href="#wsl2のインストール">WSL2のインストール</a></li>
         <li><a href="#初期設定">初期設定</a></li>
+        <li><a href="#windowsとwsl間のファイル共有">WindowsとWSL間のファイル共有</a></li>
       </ul></nav><hr></div>
 
 
 <div class="gdoc-page__anchorwrap"><h2 id="wsl2">WSL2？<a data-clipboard-text="http://tomokazu518.github.io/public/PC/wsl/#wsl2" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor WSL2？" href="#wsl2"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <ul>
-<li>WSLはWindows上(仮想環境)で動作するLinux環境</li>
-<li>Linuxには便利なツールがある(多くのツールはWindowsに移植されているが，安定性ではLinuxに軍配)</li>
-<li>とくにLatexのコンパイルなどはLinuxの方が速いし安定している</li>
-<li>メインマシンをLinuxにしようってほどは尖ってないが，Linuxのツールを使いたいという場合にはWSL2が便利</li>
-<li>基本的にはコマンド操作だが，最近GUIアプリも動くようになった</li>
+<li>WSLはWindows上(仮想環境)で動作するLinux</li>
+<li>LinuxのツールをWindowsから使いたいときに便利
+<ul>
+<li>LatexのコンパイルなどはLinuxの方が速いし安定しているのでWSLでやるのがおすすめ</li>
+<li>RStudio Serverも動く</li>
+</ul>
+</li>
+<li>基本的にはコマンド操作だがGUIアプリも動く</li>
 </ul>
 <div class="gdoc-page__anchorwrap"><h2 id="wsl2のインストール">WSL2のインストール<a data-clipboard-text="http://tomokazu518.github.io/public/PC/wsl/#wsl2のインストール" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor WSL2のインストール" href="#wsl2のインストール"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <ul>
@@ -774,68 +778,39 @@ if (!doNotTrack) {
 <li>BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目</li>
 </ul>
 </li>
-<li>Windows 11であれば，PowerShellで以下のように入力するだけでインストールできる（仮想化支援機能の有効化は必要）。デフォルトでは，Ubuntuがインストールされる。</li>
+<li>Windows 11では，PowerShellで以下のように入力するだけでインストールできる(仮想化支援機能の有効化は必要)。デフォルトでは，Ubuntuがインストールされる。</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span>
-</span></span></code></pre></div><hr>
-<p>Windows 10の場合は，以下の手順でインストールする。</p>
-<p>基本的には，<a href="https://docs.microsoft.com/ja-jp/windows/wsl/install-win10">マイクロソフトのページ</a>を見ながらやればできるが，以下に要点だけ示す。</p>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="初期設定">初期設定<a data-clipboard-text="http://tomokazu518.github.io/public/PC/wsl/#初期設定" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 初期設定" href="#初期設定"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <ul>
-<li>
-<p>Windowsを1903以上のバージョンに更新する</p>
-<ul>
-<li>Windows Updateで自動的に更新されていれば問題ない</li>
-<li>自動更新が行われない場合は，<a href="https://www.microsoft.com/ja-jp/software-download/windows10">Windows更新ツール</a>を使う</li>
-</ul>
-</li>
-<li>
-<p>(PowerShell管理者で)Linux用Windowsサブシステムを有効にする</p>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">dism</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">online</span> <span class="p">/</span><span class="nb">enable-feature</span> <span class="p">/</span><span class="n">featurename</span><span class="err">:</span><span class="nb">Microsoft-Windows</span><span class="n">-Subsystem-Linux</span> <span class="p">/</span><span class="n">all</span> <span class="p">/</span><span class="n">norestart</span>
-</span></span></code></pre></div><ul>
-<li>(PowerShell管理者で)仮想マシン機能を有効にする</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">dism</span><span class="p">.</span><span class="py">exe</span> <span class="p">/</span><span class="n">online</span> <span class="p">/</span><span class="nb">enable-feature</span> <span class="p">/</span><span class="n">featurename</span><span class="err">:</span><span class="n">VirtualMachinePlatform</span> <span class="p">/</span><span class="n">all</span> <span class="p">/</span><span class="n">norestart</span>
-</span></span></code></pre></div><ul>
-<li>
-<p>WSL2 Linuxカーネルの更新</p>
-<ul>
-<li>環境によっては，この前に再起動が必要</li>
-<li><a href="https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi">これ</a>をダウンロードして実行</li>
-</ul>
-</li>
-<li>
-<p>(PowerShell管理者で)WSL2を既定のバージョンに設定</p>
-</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-set-default-version</span> <span class="mf">2</span>
-</span></span></code></pre></div><ul>
-<li><a href="https://aka.ms/wslstore">Microsoft Store</a>からLinuxのディストリビューションをインストールする（おすすめはUbuntu，以下の説明はUbuntu前提）</li>
-</ul>
-<hr>
-<div class="gdoc-page__anchorwrap"><h2 id="初期設定">初期設定<a data-clipboard-text="http://tomokazu518.github.io/public/PC/wsl/#初期設定" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 初期設定" href="#初期設定"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<ul>
-<li>
-<p>インストールしたLinuxディストリビューションを起動する</p>
+<li>インストールしたLinuxディストリビューションを起動する(スタートメニューにUbuntuのショートカットができているはず)
 <ul>
 <li>初回起動時は，設定が行われるため数分かかる</li>
 <li>起動すると新規ユーザー名とパスワードを聞かれる(パスワードは入力しても表示されないので注意)</li>
 </ul>
 </li>
-<li>
-<p>(Linuxのシェルで)パッケージのアップデート</p>
-</li>
+<li>(Linuxのシェルで)パッケージのアップデート</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update
 </span></span><span class="line"><span class="cl">sudo apt upgrade -y
 </span></span></code></pre></div><ul>
-<li>WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに&quot;¥¥wsl$&ldquo;と入力</li>
 <li>WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl ls -l
 </span></span><span class="line"><span class="cl">ubuntu run ls -l
-</span></span></code></pre></div>
+</span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h2 id="windowsとwsl間のファイル共有">WindowsとWSL間のファイル共有<a data-clipboard-text="http://tomokazu518.github.io/public/PC/wsl/#windowsとwsl間のファイル共有" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor WindowsとWSL間のファイル共有" href="#windowsとwsl間のファイル共有"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<ul>
+<li>WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに&quot;¥¥wsl$&ldquo;と入力</li>
+<li>Linuxからは，/mnt/下にWindows側のドライブがマウントされる(Cドライブは/mnt/c/)
+<ul>
+<li>ただし，LinuxからWindows側ファイルへのアクセスには時間がかかる<br>
+→Texのコンパイルなど頻繁に多くのファイルを書き換えるような場合には体感できるくらい遅い</li>
+<li>わたしは<a href="https://syncthing.net/">Syncthing</a>というツールを使って，WindowsとLinuxの作業ディレクトリを同期している(両方に同じ内容のファイルが存在することになるので冗長ではある)</li>
+<li>ちなみにSyncthingは良くできていて，ほかのマシンとファイルを同期するのに便利(分散型なのでサーバは必要ないが，一台は最新バージョンが同期されたマシンの電源が入っていないといけないので，Raspberry Piなどを拠点にするのが良いかも)</li>
+</ul>
+</li>
+</ul>
+
 
     </article>
 
