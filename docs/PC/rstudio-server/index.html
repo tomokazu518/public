@@ -759,7 +759,7 @@ if (!doNotTrack) {
 →こっちの方が良いと思う</li>
 <li>まず，証明書とレポジトリを追加</li>
 </ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc <span class="p">|</span> sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.a
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc <span class="p">|</span> sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 </span></span><span class="line"><span class="cl">sudo add-apt-repository <span class="s1">&#39;deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/&#39;</span>
 </span></span></code></pre></div><ul>
 <li>RおよびRStudio Serverを使うために必要なパッケージをインストール</li>
@@ -767,7 +767,7 @@ if (!doNotTrack) {
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install -y r-base r-base-core r-recommended r-base-dev gdebi-core build-essential libcurl4-gnutls-dev libxml2-dev libssl-dev
 </span></span></code></pre></div><div class="gdoc-page__anchorwrap"><h3 id="rstudio-serverのインストール">RStudio Serverのインストール<a data-clipboard-text="http://tomokazu518.github.io/public/PC/rstudio-server/#rstudio-serverのインストール" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor RStudio Serverのインストール" href="#rstudio-serverのインストール"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <ul>
-<li>Ubuntu用のRStudio Serverをダウンロード(jammyの部分はUbuntuのバージョンによって変更)</li>
+<li>Ubuntu用のRStudio Serverをダウンロード</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wget https://rstudio.org/download/latest/stable/server/<span class="k">$(</span>lsb_release -cs<span class="k">)</span>/rstudio-server-latest-amd64.deb
 </span></span></code></pre></div><ul>

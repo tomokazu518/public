@@ -25,7 +25,7 @@ weight: 40
 - まず，証明書とレポジトリを追加
 
 ```bash
-wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.a
+wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc
 sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/'
 ```
 
@@ -37,7 +37,7 @@ sudo apt install -y r-base r-base-core r-recommended r-base-dev gdebi-core build
 
 ### RStudio Serverのインストール
 
-- Ubuntu用のRStudio Serverをダウンロード(jammyの部分はUbuntuのバージョンによって変更)
+- Ubuntu用のRStudio Serverをダウンロード
 
 ```bash
 wget https://rstudio.org/download/latest/stable/server/$(lsb_release -cs)/rstudio-server-latest-amd64.deb
