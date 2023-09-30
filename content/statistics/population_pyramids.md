@@ -16,4 +16,4 @@ weight: 20
 
 ## Rのコード
 
-<script src="https://gist.github.com/tomokazu518/7d94dc7ab21ef7998a45b425f1651035.js?file=population_pyramids.R"></script>
+<script src="https://gist.github.com/tomokazu518/c4cd5a6808154ba398ff1a1eab209cb7.js?file=population_pyramids.R"></script>

@@ -21,4 +21,4 @@ e-statでは，四半期GDP速報は1994年からデータを入手可能だが�
 
 ## Rのコード
 
-<script src="https://gist.github.com/tomokazu518/7d94dc7ab21ef7998a45b425f1651035.js?file=quarterly_gdp.R"></script>
+<script src="https://gist.github.com/tomokazu518/c4cd5a6808154ba398ff1a1eab209cb7.js?file=quarterly_gdp.R"></script>

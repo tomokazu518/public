@@ -32,4 +32,4 @@ weight: 40
 
 新旧分類を統合して1つのグラフにしたものを作成するコードもgithub gistには置いてある。
 
-<script src="https://gist.github.com/tomokazu518/7d94dc7ab21ef7998a45b425f1651035.js?file=industry_occupation_simple.R"></script>
+<script src="https://gist.github.com/tomokazu518/c4cd5a6808154ba398ff1a1eab209cb7.js?file=industry_occupation_simple.R"></script>
