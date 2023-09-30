@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="コロプレス図(Covid-19累積感染者数)">
+<meta name="description" content="コロプレス図(Covid-19累積死亡者数)">
 
-<title>コロプレス図(Covid-19累積感染者数) | Tomokazu NOMURA</title>
+<title>コロプレス図(Covid-19累積死亡者数) | Tomokazu NOMURA</title>
 
 <link rel="icon" href="/public/favicon/favicon-32x32.png" type="image/x-icon">
 
@@ -628,7 +628,7 @@ if (!doNotTrack) {
             
                 <span class="flex">
                     <a href="/public/statistics/map/" class="gdoc-nav__entry is-active">
-                        コロプレス図(Covid-19累積感染者数)
+                        コロプレス図(Covid-19累積死亡者数)
                     </a>
                 </span>
             
@@ -697,7 +697,7 @@ if (!doNotTrack) {
         
     
     
-        <a href='/public/'>Tomokazu NOMURA's Web Page</a> / <a href='/public/statistics/'>Rによる公的統計の視覚化</a> / コロプレス図(Covid-19累積感染者数)
+        <a href='/public/'>Tomokazu NOMURA's Web Page</a> / <a href='/public/statistics/'>Rによる公的統計の視覚化</a> / コロプレス図(Covid-19累積死亡者数)
     
 
     
@@ -714,7 +714,7 @@ if (!doNotTrack) {
 
 
     <article class="gdoc-markdown">
-        <h1>コロプレス図(Covid-19累積感染者数)</h1>
+        <h1>コロプレス図(Covid-19累積死亡者数)</h1>
         
 
 
@@ -724,19 +724,19 @@ if (!doNotTrack) {
 
 <div class="gdoc-page__anchorwrap"><h2 id="はじめに">はじめに<a data-clipboard-text="http://tomokazu518.github.io/public/statistics/map/#はじめに" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor はじめに" href="#はじめに"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <p>国土交通省の国土数値情報を用いて，都道府県単位のコロプレス図を描画するための地図を作成する。</p>
-<p>まず，三重大学の奥村先生のホームページを参考に，コロプレス図用のgeojsonファイルを作成する。国土数値情報のシェープファイルはサイズが大きいので，都道府県単位に集約し，さらにデータ量を1000分の1に減らす。そこそこのスペックのPCが必要になるが，無理に手元でやらなくても奥村先生が完成したgeojsonファイルを公開してくれているので，それをダウンロードして使っても良い。</p>
-<p>geojsonファイルに都道府県単位のデータをマージすることで，コロプレス図が作成できる。ここでは，例として厚労省のオープンデータから都道府県別のCovid-19の累積感染者数を入手し，コロプレス図を作成する。</p>
+<p>まず，三重大学の奥村先生のホームページを参考に，コロプレス図用のgeojsonファイルを作成する。国土数値情報のシェープファイルはサイズが大きいので，都道府県単位に集約し，さらにデータ量を1000分の1に減らす。無理に手元でやらなくても奥村先生が完成したgeojsonファイルを公開してくれているので，それをダウンロードして使っても良い。</p>
+<p>geojsonファイルに都道府県単位のデータをマージすることで，コロプレス図が作成できる。ここでは，例として厚労省のオープンデータから都道府県別のCovid-19の累積死亡者数を入手し，コロプレス図を作成する (厚労省のオープンデータは新型コロナの5類移行で更新終了)。</p>
 <div class="gdoc-page__anchorwrap"><h2 id="結果">結果<a data-clipboard-text="http://tomokazu518.github.io/public/statistics/map/#結果" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 結果" href="#結果"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
-<div class="gdoc-page__anchorwrap"><h3 id="20220827までの都道府県別covid-19累積感染者数">2022/08/27までの都道府県別Covid-19累積感染者数<a data-clipboard-text="http://tomokazu518.github.io/public/statistics/map/#20220827までの都道府県別covid-19累積感染者数" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 2022/08/27までの都道府県別Covid-19累積感染者数" href="#20220827までの都道府県別covid-19累積感染者数"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
-<figure><img src="../covid-19.png"
-         alt="covid-19"/>
+<div class="gdoc-page__anchorwrap"><h3 id="20220508までの都道府県別covid-19累積死亡者数">2022/05/08までの都道府県別Covid-19累積死亡者数<a data-clipboard-text="http://tomokazu518.github.io/public/statistics/map/#20220508までの都道府県別covid-19累積死亡者数" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 2022/05/08までの都道府県別Covid-19累積死亡者数" href="#20220508までの都道府県別covid-19累積死亡者数"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<figure><img src="../covid-19_deaths.png"
+         alt="covid-19_deaths"/>
 </figure>
 
 <div class="gdoc-page__anchorwrap"><h2 id="rのコード">Rのコード<a data-clipboard-text="http://tomokazu518.github.io/public/statistics/map/#rのコード" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Rのコード" href="#rのコード"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
 <div class="gdoc-page__anchorwrap"><h3 id="geojsonファイルの作成">geojsonファイルの作成<a data-clipboard-text="http://tomokazu518.github.io/public/statistics/map/#geojsonファイルの作成" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor geojsonファイルの作成" href="#geojsonファイルの作成"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
-<script src="https://gist.github.com/tomokazu518/7d94dc7ab21ef7998a45b425f1651035.js?file=choropleth.R"></script>
-<div class="gdoc-page__anchorwrap"><h3 id="都道府県別covid-19累積感染者数最新日付のものを作成">都道府県別Covid-19累積感染者数(最新日付のものを作成)<a data-clipboard-text="http://tomokazu518.github.io/public/statistics/map/#都道府県別covid-19累積感染者数最新日付のものを作成" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 都道府県別Covid-19累積感染者数(最新日付のものを作成)" href="#都道府県別covid-19累積感染者数最新日付のものを作成"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
-<script src="https://gist.github.com/tomokazu518/7d94dc7ab21ef7998a45b425f1651035.js?file=covid19.R"></script>
+<script src="https://gist.github.com/tomokazu518/c4cd5a6808154ba398ff1a1eab209cb7.js?file=choropleth.R"></script>
+<div class="gdoc-page__anchorwrap"><h3 id="都道府県別covid-19累積死亡者数202358まで">都道府県別Covid-19累積死亡者数(2023/5/8まで)<a data-clipboard-text="http://tomokazu518.github.io/public/statistics/map/#都道府県別covid-19累積死亡者数202358まで" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 都道府県別Covid-19累積死亡者数(2023/5/8まで)" href="#都道府県別covid-19累積死亡者数202358まで"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
+<script src="https://gist.github.com/tomokazu518/c4cd5a6808154ba398ff1a1eab209cb7.js?file=covid19.R"></script>
 
     </article>
 
