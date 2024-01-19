@@ -21,8 +21,8 @@ geojsonファイルに都道府県単位のデータをマージすることで�
 
 ### geojsonファイルの作成
 
-<script src="https://gist.github.com/tomokazu518/c4cd5a6808154ba398ff1a1eab209cb7.js?file=choropleth.R"></script>
+{{< gist tomokazu518 c4cd5a6808154ba398ff1a1eab209cb7 choropleth.R >}}
 
 ### 都道府県別Covid-19累積死亡者数(2023/5/8まで)
 
-<script src="https://gist.github.com/tomokazu518/c4cd5a6808154ba398ff1a1eab209cb7.js?file=covid19.R"></script>
+{{< gist tomokazu518 c4cd5a6808154ba398ff1a1eab209cb7 covid19.R >}}

@@ -1,15 +1,11 @@
 {{ define "main" }}
-    {{ partial "page-header" . }}
-    <article class="gdoc-markdown">
-        <h1>{{ partial "title" . }}</h1>
-        {{ partial "content" . }}
-        <h2>Contents</h2>
-    <ul>
-        {{ range .Data.Pages }}
-        <li>
-          <a href="{{ .Permalink }}">{{ .Title }} </a>
-        </li>
-        {{ end }}
-      </ul>
-    </article>
+  {{ partial "page-header" . }}
+
+
+  <article
+    class="gdoc-markdown gdoc-markdown__align--{{ default "left" (.Page.Params.geekdocAlign | lower) }}"
+  >
+    <h1>{{ partial "utils/title" . }}</h1>
+    {{ partial "utils/content" . }}
+  </article>
 {{ end }}

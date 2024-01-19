@@ -138,7 +138,7 @@ sudo mv pandoc-crossref /usr/bin
   - .synctexファイルを圧縮なしで出力(コンパイルのオプションに -synctex=-1 をつける)し，以下のようなhスクリプトに渡せば自動化可能
   - たとえば，texmakerで，Latex→DVIPDF→下の変換スクリプト→PDFビューアの順で実行するユーザーコマンドを登録すればよい
 
-```bash
+```sh
 FILEPATH=$(wslpath $1) 
 array=($(grep "/mnt/" $FILEPATH)) 
 for i in ${array[@]}
