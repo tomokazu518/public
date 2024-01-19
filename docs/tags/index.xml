@@ -5,6 +5,7 @@
     <link>http://tomokazu518.github.io/public/tags/</link>
     <description>Recent content in Tags on Tomokazu NOMURA</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>ja</language><atom:link href="http://tomokazu518.github.io/public/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>ja</language>
+    <atom:link href="http://tomokazu518.github.io/public/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
