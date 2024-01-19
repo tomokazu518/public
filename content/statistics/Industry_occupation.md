@@ -18,18 +18,16 @@ weight: 40
 
 ### 産業構造
 
-{{< figure src="../industry_old.png" alt="Industry structure until 2000" >}}
+{{< figure src="../industry_old.svg" alt="Industry structure until 2000" >}}
 
-{{< figure src="../industry_latest.png" alt="Industry structure since 1995" >}}
+{{< figure src="../industry_latest.svg" alt="Industry structure since 1995" >}}
 
 ### 職業構成
 
-{{< figure src="../occupation_old.png" alt="Industry structure until 2005" >}}
+{{< figure src="../occupation_old.svg" alt="Industry structure until 2005" >}}
 
-{{< figure src="../occupation_latest.png" alt="Industry structure since 1995" >}}
+{{< figure src="../occupation_latest.svg" alt="Industry structure since 1995" >}}
 
 ## Rのコード
-
-新旧分類を統合して1つのグラフにしたものを作成するコードもgithub gistには置いてある。
 
 {{< gist tomokazu518 c4cd5a6808154ba398ff1a1eab209cb7 industry_occupation_simple.R >}}

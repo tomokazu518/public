@@ -11,12 +11,12 @@ weight: 70
 
 ### 学歴別賃金プロファイル
 
-{{< figure src="../wage_profile.png" alt="Wage profile by education" >}}
+{{< figure src="../wage_profile_by_education.svg" alt="Wage profile by education" >}}
 
 
 ### 大学卒労働者の企業規模別賃金プロファイル
 
-{{< figure src="../wage_profile_fs.png" alt="Wage profile of university graduates" >}}
+{{< figure src="../wage_profile_by_firmsize.svg" alt="Wage profile of university graduates" >}}
 
 ## Rのコード
 

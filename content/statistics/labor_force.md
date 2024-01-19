@@ -11,19 +11,19 @@ weight: 50
 
 ### 労働力人口の推移
 
-{{< figure src="../laborforce.png" alt="Labor force" >}}
+{{< figure src="../population_laborforce.svg" alt="Labor force" >}}
 
 ### 年齢階級別労働力率の推移
 
-{{< figure src="../participation.png" alt="Participation rates" >}}
+{{< figure src="../labor_participation_by_age.svg" alt="Participation rates" >}}
 
 ### 年齢階級別失業率の推移
 
-{{< figure src="../unemployment.png" alt="Unemployment" >}}
+{{< figure src="../unemployment_by_age.svg" alt="Unemployment" >}}
 
 ### M字カーブ
 
-{{< figure src="../m_shape.png" alt="M-shape curve" >}}
+{{< figure src="../m_curve.svg" alt="M-shape curve" >}}
 
 ## Rのコード
 

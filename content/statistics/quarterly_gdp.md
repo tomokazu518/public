@@ -7,7 +7,7 @@ weight: 80
 
 国民経済計算(GDP統計)の四半期GDP速報を使って，経済成長率の折れ線グラフと寄与度の積上げ棒グラフを重ねたものを作成する。データはe-statのAPIで入手する。
 
-e-statでは，四半期GDP速報は1994年からデータを入手可能だが，1994年から現在までを1枚のグラフにすると見にくいので，期間を指定してグラフを作成する。ここでは，2014年以降のグラフを描いた。
+e-statでは，四半期GDP速報は1994年からデータを入手可能だが，1994年から現在までを1枚のグラフにすると見にくいので，期間を指定してグラフを作成する。ここでは，期間を3つに分けてグラフを描いた。
 
 できあがるのは新聞などでもよく見るグラフ。
 
@@ -15,7 +15,14 @@ e-statでは，四半期GDP速報は1994年からデータを入手可能だが�
 
 ## 結果
 
-{{< figure src="../quarterly_gdp.png" alt="Economic Growth" >}}
+1994年から2003年まで
+{{< figure src="../quarterly_gdp-1.svg" alt="Economic Growth" >}}
+
+2004年から2013年まで
+{{< figure src="../quarterly_gdp-2.svg" alt="Economic Growth" >}}
+
+2014年以降
+{{< figure src="../quarterly_gdp-3.svg" alt="Economic Growth" >}}
 
 ## Rのコード
 

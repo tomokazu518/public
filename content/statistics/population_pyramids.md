@@ -12,7 +12,7 @@ weight: 20
 
 ## 結果
 
-{{< figure src="../pyramids.png" alt="Population pyramids" >}}
+{{< figure src="../population_pyramids.svg" alt="Population pyramids" >}}
 
 ## Rのコード
 

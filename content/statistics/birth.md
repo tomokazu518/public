@@ -11,7 +11,7 @@ weight: 30
 
 ## 結果
 
-{{< figure src="../vital.png" alt="Birth" >}}
+{{< figure src="../birth.svg" alt="Birth" >}}
 
 ## Rのコード
 

@@ -9,7 +9,7 @@ weight: 60
 
 ## 結果
 
-{{< figure src="../working_hours.png" alt="Working hours" >}}
+{{< figure src="../working_hours.svg" alt="Working hours" >}}
 
 ## Rのコード
 
