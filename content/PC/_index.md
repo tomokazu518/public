@@ -1,5 +1,6 @@
 ---
 title: PC Tips
-type: post
-geekdocBreadcrumb: false
+geekdocBreadcrumb: true
 ---
+
+研究環境構築のためのTipsです。Mac OSとUbuntu(WindowsのWSL)について書いています。
