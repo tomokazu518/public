@@ -77,15 +77,17 @@ MarkdownからBeamerプレゼンテーションのPDFを作成するために必
   - おすすめはVisual Studio Code
 - Pandoc
   - 無料の文書形式変換ソフト→Markdownからだとhtmlやword，Latexなどいろいろ変換できる
-  - おすすめは，WSL2(Windows Subsystem for Linux 2)上にインストールして使うこと
+  - Windows, Mac, Linux対応
 - Tex
   - MarkdownをWordやhtmlに変換するには不要
   - Beamerスライドの作成やLatex経由でPDFを作成するためには必須
-  - こちらもおすすめはWSL2(Windows Subsystem for Linux 2)上にインストールして使うこと
+  - Windowsで使う場合は，WSL上にインストールするかDockerを使うのがおすすめ
 - PDFファイルのビューア
-  - WindowsであればSumatra PDF一択→Sumatra PDFは開いているファイルをロックしないので，ファイルを閉じなくても上書きできる(ファイルを上書きすると自動的に再読み込みされる)
-  - Sumatra PDFは動作が軽いので，普段使いにもおすすめ
-  - Macだとskimが良い
+  - WindowsであればSumatra PDF一択
+    - Sumatra PDFは開いているファイルをロックしないので，ファイルを閉じなくても上書きできる(ファイルを上書きすると自動的に再読み込みされる)
+    - Sumatra PDFは動作が軽いので，普段使いにもおすすめ
+  - Macであればskim
+  - VS CodeでもPDFを表示できる，とくにTexWorkshopのPDFビューアは便利
 - フォント
   - [IPAフォント](https://moji.or.jp/ipafont/)がおすすめ
 
