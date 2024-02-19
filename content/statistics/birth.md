@@ -11,7 +11,7 @@ weight: 30
 
 ## 結果
 
-{{< figure src="../birth.svg" alt="Birth" >}}
+{{< figure src="../svg_files/birth.svg" alt="Birth" >}}
 
 ## Rのコード
 

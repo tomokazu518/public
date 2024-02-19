@@ -16,7 +16,7 @@ weight: 10
 
 ## 結果
 
-{{< figure src="../population_pyramid2020.svg" alt="Population pyramid in 2020" >}}
+{{< figure src="../svg_files/population_pyramid2020.svg" alt="Population pyramid in 2020" >}}
 
 ## Rのコード
 

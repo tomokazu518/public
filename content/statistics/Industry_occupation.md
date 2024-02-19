@@ -18,15 +18,15 @@ weight: 40
 
 ### 産業構造
 
-{{< figure src="../industry_old.svg" alt="Industry structure until 2000" >}}
+{{< figure src="../svg_files/industry_old.svg" alt="Industry structure until 2000" >}}
 
-{{< figure src="../industry_latest.svg" alt="Industry structure since 1995" >}}
+{{< figure src="../svg_files/industry_latest.svg" alt="Industry structure since 1995" >}}
 
 ### 職業構成
 
-{{< figure src="../occupation_old.svg" alt="Industry structure until 2005" >}}
+{{< figure src="../svg_files/occupation_old.svg" alt="Industry structure until 2005" >}}
 
-{{< figure src="../occupation_latest.svg" alt="Industry structure since 1995" >}}
+{{< figure src="../osvg_files/ccupation_latest.svg" alt="Industry structure since 1995" >}}
 
 ## Rのコード
 

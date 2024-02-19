@@ -16,13 +16,13 @@ e-statでは，四半期GDP速報は1994年からデータを入手可能だが�
 ## 結果
 
 1994年から2003年まで
-{{< figure src="../quarterly_gdp-1.svg" alt="Economic Growth" >}}
+{{< figure src="../svg_files/quarterly_gdp-1.svg" alt="Economic Growth" >}}
 
 2004年から2013年まで
-{{< figure src="../quarterly_gdp-2.svg" alt="Economic Growth" >}}
+{{< figure src="../svg_files/quarterly_gdp-2.svg" alt="Economic Growth" >}}
 
 2014年以降
-{{< figure src="../quarterly_gdp-3.svg" alt="Economic Growth" >}}
+{{< figure src="../svg_files/quarterly_gdp-3.svg" alt="Economic Growth" >}}
 
 ## Rのコード
 

@@ -15,7 +15,7 @@ geojsonファイルに都道府県単位のデータをマージすることで�
 
 ### 2022/05/08までの都道府県別Covid-19累積死亡者数
 
-{{< figure src="../covid-19_deaths.svg" alt="covid-19_deaths" >}}
+{{< figure src="../svg_files/covid-19_deaths.svg" alt="covid-19_deaths" >}}
 
 ## Rのコード
 
