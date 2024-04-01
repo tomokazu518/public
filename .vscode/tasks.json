@@ -7,6 +7,13 @@
 			"group": "build",
 			"problemMatcher": [],
 			"label": "hugo: Build site"
+		},
+		{
+			"type": "hugo",
+			"task": "server draft",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "hugo: Serve draft site"
 		}
 	]
 }

@@ -2,6 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://tomokazu518.github.io/public/PC/QandA/</loc>
+  </url><url>
     <loc>http://tomokazu518.github.io/public/PC/wsl/</loc>
   </url><url>
     <loc>http://tomokazu518.github.io/public/statistics/census/</loc>
