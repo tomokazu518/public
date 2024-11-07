@@ -9,10 +9,10 @@
 <meta name="referrer" content="no-referrer" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="light dark" />
-<meta name="generator" content="Hugo 0.124.1">
+<meta name="generator" content="Hugo 0.128.2">
 
 
-  <meta name="description" content=" WSL2？ WSL2のインストール 初期設定 WindowsとWSL間のファイル共有 WSL2？ WSLはLinuxのためのWindows上の仮想環境 LinuxのプログラムをWindowsで利用したいときに便利 LatexのコンパイルはLinuxの方が速いし安定しているのでWSLでやるのがおすすめ MacやLinuxと共通の環境を構築できる 基本的にはコマンド操作だがGUIアプリも動く WSL2のインストール BIOSで仮想化支援機能を有効にする 最初から有効になっていることも多い BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目 Windows 11では，PowerShellで以下のように入力するだけでインストールできる(仮想化支援機能の有効化は必要)。デフォルトでは，Ubuntuがインストールされる。 wsl --install すでにWSLがインストールされている場合は，念のためアップデートしてUbuntuをインストール。 wsl --update wsl install -d Ubuntu 初期設定 インストールしたLinuxディストリビューションを起動する(スタートメニューにUbuntuのショートカットができているはず) 初回起動時は，設定が行われるため数分かかる 起動すると新規ユーザー名とパスワードを聞かれる(パスワードは入力しても表示されないので注意) (Linuxのシェルで)パッケージのアップデート sudo apt update sudo apt upgrade -y WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う wsl ls -l ubuntu run ls -l WindowsとWSL間のファイル共有 WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに&quot;¥¥wsl$&ldquo;と入力 Linuxからは，/mnt/下にWindows側のドライブがマウントされる(Cドライブは/mnt/c/) ただし，LinuxとWindowsでは互いにファイルシステムが違うため，アクセスに時間がかかる ちょっとした読み書きには支障ないが，Texのコンパイルなど頻繁に多くのファイルを書き換えるような場合には体感できるくらい遅い Linuxで使うファイル(texのソースなど)はLinux側，Windowsで使うファイル(MS Officeのファイルなど)はWindows側に置いておくのが良い わたしはSyncthingというツールを使って，WindowsとLinuxの作業ディレクトリを同期している(両方に同じ内容のファイルが存在することになるので冗長ではある) ちなみにSyncthingは良くできていて，ほかのマシンとファイルを同期するのに便利 分散型なのでサーバは必要ないが，常時起動しているPCが一台あると同期漏れがなく安心 Raspberry Piなどを拠点にするのが良いかも " />
+  <meta name="description" content=" WSL2？ WSL2のインストール 初期設定 WindowsとWSL間のファイル共有 WSL2？ WSLはLinuxのためのWindows上の仮想環境 LinuxのプログラムをWindowsで利用したいときに便利 LatexのコンパイルはLinuxの方が速いし安定しているのでWSLでやるのがおすすめ WindowsマシンでもMacやLinuxと共通の環境を構築できる 基本的にはコマンド操作だがGUIアプリも動く WSL2のインストール BIOSで仮想化支援機能を有効にする 最初から有効になっていることも多い BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目 Windows 11では，仮想化支援機能が有効になった状態で，PowerShellに以下のように入力するだけでインストールできる。デフォルトでは，Ubuntuがインストールされる。 wsl --install すでにWSLがインストールされている場合は，念のためアップデートしてUbuntuをインストール。 wsl --update wsl install -d Ubuntu 初期設定 インストールしたLinuxディストリビューションを起動する(スタートメニューにUbuntuのショートカットができているはず) 初回起動時は，設定が行われるため数分かかる 起動すると新規ユーザー名とパスワードを聞かれる(パスワードは入力しても表示されないので注意) (Linuxのシェルで)パッケージのアップデート sudo apt update sudo apt upgrade -y Linuxのシェルを起動しなくても，WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを実行することができる wslコマンド，もしくはubuntu runコマンドを使う wsl ls -l ubuntu run ls -l WindowsとWSL間のファイル共有 WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに&quot;¥¥wsl$&ldquo;と入力 Linuxからは，/mnt/下にWindows側のドライブがマウントされる(Cドライブは/mnt/c/) ただし，LinuxとWindowsでは互いにファイルシステムが違うため，アクセスに時間がかかる ちょっとした読み書きには支障ないが，Texのコンパイルなど頻繁に多くのファイルを書き換えるような場合には体感できるくらい遅い Linuxで使うファイル(Texなど)はLinux側，Windowsで使うファイル(MS Officeのファイルなど)はWindows側に置いておくのが良い " />
 
     <title>WSL(Windows Subsystem for Linux) 2 導入メモ | Tomokazu NOMURA</title>
 
@@ -38,7 +38,7 @@
     content="WSL(Windows Subsystem for Linux) 2 導入メモ"
   />
   <meta property="og:site_name" content="Tomokazu NOMURA" />
-  <meta property="og:description" content=" WSL2？ WSL2のインストール 初期設定 WindowsとWSL間のファイル共有 WSL2？ WSLはLinuxのためのWindows上の仮想環境 LinuxのプログラムをWindowsで利用したいときに便利 LatexのコンパイルはLinuxの方が速いし安定しているのでWSLでやるのがおすすめ MacやLinuxと共通の環境を構築できる 基本的にはコマンド操作だがGUIアプリも動く WSL2のインストール BIOSで仮想化支援機能を有効にする 最初から有効になっていることも多い BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目 Windows 11では，PowerShellで以下のように入力するだけでインストールできる(仮想化支援機能の有効化は必要)。デフォルトでは，Ubuntuがインストールされる。 wsl --install すでにWSLがインストールされている場合は，念のためアップデートしてUbuntuをインストール。 wsl --update wsl install -d Ubuntu 初期設定 インストールしたLinuxディストリビューションを起動する(スタートメニューにUbuntuのショートカットができているはず) 初回起動時は，設定が行われるため数分かかる 起動すると新規ユーザー名とパスワードを聞かれる(パスワードは入力しても表示されないので注意) (Linuxのシェルで)パッケージのアップデート sudo apt update sudo apt upgrade -y WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う wsl ls -l ubuntu run ls -l WindowsとWSL間のファイル共有 WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに&#34;¥¥wsl$“と入力 Linuxからは，/mnt/下にWindows側のドライブがマウントされる(Cドライブは/mnt/c/) ただし，LinuxとWindowsでは互いにファイルシステムが違うため，アクセスに時間がかかる ちょっとした読み書きには支障ないが，Texのコンパイルなど頻繁に多くのファイルを書き換えるような場合には体感できるくらい遅い Linuxで使うファイル(texのソースなど)はLinux側，Windowsで使うファイル(MS Officeのファイルなど)はWindows側に置いておくのが良い わたしはSyncthingというツールを使って，WindowsとLinuxの作業ディレクトリを同期している(両方に同じ内容のファイルが存在することになるので冗長ではある) ちなみにSyncthingは良くできていて，ほかのマシンとファイルを同期するのに便利 分散型なのでサーバは必要ないが，常時起動しているPCが一台あると同期漏れがなく安心 Raspberry Piなどを拠点にするのが良いかも " />
+  <meta property="og:description" content=" WSL2？ WSL2のインストール 初期設定 WindowsとWSL間のファイル共有 WSL2？ WSLはLinuxのためのWindows上の仮想環境 LinuxのプログラムをWindowsで利用したいときに便利 LatexのコンパイルはLinuxの方が速いし安定しているのでWSLでやるのがおすすめ WindowsマシンでもMacやLinuxと共通の環境を構築できる 基本的にはコマンド操作だがGUIアプリも動く WSL2のインストール BIOSで仮想化支援機能を有効にする 最初から有効になっていることも多い BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目 Windows 11では，仮想化支援機能が有効になった状態で，PowerShellに以下のように入力するだけでインストールできる。デフォルトでは，Ubuntuがインストールされる。 wsl --install すでにWSLがインストールされている場合は，念のためアップデートしてUbuntuをインストール。 wsl --update wsl install -d Ubuntu 初期設定 インストールしたLinuxディストリビューションを起動する(スタートメニューにUbuntuのショートカットができているはず) 初回起動時は，設定が行われるため数分かかる 起動すると新規ユーザー名とパスワードを聞かれる(パスワードは入力しても表示されないので注意) (Linuxのシェルで)パッケージのアップデート sudo apt update sudo apt upgrade -y Linuxのシェルを起動しなくても，WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを実行することができる wslコマンド，もしくはubuntu runコマンドを使う wsl ls -l ubuntu run ls -l WindowsとWSL間のファイル共有 WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに&#34;¥¥wsl$“と入力 Linuxからは，/mnt/下にWindows側のドライブがマウントされる(Cドライブは/mnt/c/) ただし，LinuxとWindowsでは互いにファイルシステムが違うため，アクセスに時間がかかる ちょっとした読み書きには支障ないが，Texのコンパイルなど頻繁に多くのファイルを書き換えるような場合には体感できるくらい遅い Linuxで使うファイル(Texなど)はLinux側，Windowsで使うファイル(MS Officeのファイルなど)はWindows側に置いておくのが良い " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://tomokazu518.github.io/public/PC/wsl/" />
 
@@ -47,7 +47,7 @@
 
   <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="WSL(Windows Subsystem for Linux) 2 導入メモ" />
-  <meta name="twitter:description" content=" WSL2？ WSL2のインストール 初期設定 WindowsとWSL間のファイル共有 WSL2？ WSLはLinuxのためのWindows上の仮想環境 LinuxのプログラムをWindowsで利用したいときに便利 LatexのコンパイルはLinuxの方が速いし安定しているのでWSLでやるのがおすすめ MacやLinuxと共通の環境を構築できる 基本的にはコマンド操作だがGUIアプリも動く WSL2のインストール BIOSで仮想化支援機能を有効にする 最初から有効になっていることも多い BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目 Windows 11では，PowerShellで以下のように入力するだけでインストールできる(仮想化支援機能の有効化は必要)。デフォルトでは，Ubuntuがインストールされる。 wsl --install すでにWSLがインストールされている場合は，念のためアップデートしてUbuntuをインストール。 wsl --update wsl install -d Ubuntu 初期設定 インストールしたLinuxディストリビューションを起動する(スタートメニューにUbuntuのショートカットができているはず) 初回起動時は，設定が行われるため数分かかる 起動すると新規ユーザー名とパスワードを聞かれる(パスワードは入力しても表示されないので注意) (Linuxのシェルで)パッケージのアップデート sudo apt update sudo apt upgrade -y WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う wsl ls -l ubuntu run ls -l WindowsとWSL間のファイル共有 WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに&#34;¥¥wsl$“と入力 Linuxからは，/mnt/下にWindows側のドライブがマウントされる(Cドライブは/mnt/c/) ただし，LinuxとWindowsでは互いにファイルシステムが違うため，アクセスに時間がかかる ちょっとした読み書きには支障ないが，Texのコンパイルなど頻繁に多くのファイルを書き換えるような場合には体感できるくらい遅い Linuxで使うファイル(texのソースなど)はLinux側，Windowsで使うファイル(MS Officeのファイルなど)はWindows側に置いておくのが良い わたしはSyncthingというツールを使って，WindowsとLinuxの作業ディレクトリを同期している(両方に同じ内容のファイルが存在することになるので冗長ではある) ちなみにSyncthingは良くできていて，ほかのマシンとファイルを同期するのに便利 分散型なのでサーバは必要ないが，常時起動しているPCが一台あると同期漏れがなく安心 Raspberry Piなどを拠点にするのが良いかも " />
+  <meta name="twitter:description" content=" WSL2？ WSL2のインストール 初期設定 WindowsとWSL間のファイル共有 WSL2？ WSLはLinuxのためのWindows上の仮想環境 LinuxのプログラムをWindowsで利用したいときに便利 LatexのコンパイルはLinuxの方が速いし安定しているのでWSLでやるのがおすすめ WindowsマシンでもMacやLinuxと共通の環境を構築できる 基本的にはコマンド操作だがGUIアプリも動く WSL2のインストール BIOSで仮想化支援機能を有効にする 最初から有効になっていることも多い BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目 Windows 11では，仮想化支援機能が有効になった状態で，PowerShellに以下のように入力するだけでインストールできる。デフォルトでは，Ubuntuがインストールされる。 wsl --install すでにWSLがインストールされている場合は，念のためアップデートしてUbuntuをインストール。 wsl --update wsl install -d Ubuntu 初期設定 インストールしたLinuxディストリビューションを起動する(スタートメニューにUbuntuのショートカットができているはず) 初回起動時は，設定が行われるため数分かかる 起動すると新規ユーザー名とパスワードを聞かれる(パスワードは入力しても表示されないので注意) (Linuxのシェルで)パッケージのアップデート sudo apt update sudo apt upgrade -y Linuxのシェルを起動しなくても，WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを実行することができる wslコマンド，もしくはubuntu runコマンドを使う wsl ls -l ubuntu run ls -l WindowsとWSL間のファイル共有 WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに&#34;¥¥wsl$“と入力 Linuxからは，/mnt/下にWindows側のドライブがマウントされる(Cドライブは/mnt/c/) ただし，LinuxとWindowsでは互いにファイルシステムが違うため，アクセスに時間がかかる ちょっとした読み書きには支障ないが，Texのコンパイルなど頻繁に多くのファイルを書き換えるような場合には体感できるくらい遅い Linuxで使うファイル(Texなど)はLinux側，Windowsで使うファイル(MS Officeのファイルなど)はWindows側に置いておくのが良い " />
 
 
   <script type="application/ld+json">
@@ -58,8 +58,8 @@
       "name": "WSL(Windows Subsystem for Linux) 2 導入メモ",
       "url" : "http://tomokazu518.github.io/public/PC/wsl/",
       "headline": "WSL(Windows Subsystem for Linux) 2 導入メモ",
-      "description": " WSL2？ WSL2のインストール 初期設定 WindowsとWSL間のファイル共有 WSL2？ WSLはLinuxのためのWindows上の仮想環境 LinuxのプログラムをWindowsで利用したいときに便利 LatexのコンパイルはLinuxの方が速いし安定しているのでWSLでやるのがおすすめ MacやLinuxと共通の環境を構築できる 基本的にはコマンド操作だがGUIアプリも動く WSL2のインストール BIOSで仮想化支援機能を有効にする 最初から有効になっていることも多い BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目 Windows 11では，PowerShellで以下のように入力するだけでインストールできる(仮想化支援機能の有効化は必要)。デフォルトでは，Ubuntuがインストールされる。 wsl --install すでにWSLがインストールされている場合は，念のためアップデートしてUbuntuをインストール。 wsl --update wsl install -d Ubuntu 初期設定 インストールしたLinuxディストリビューションを起動する(スタートメニューにUbuntuのショートカットができているはず) 初回起動時は，設定が行われるため数分かかる 起動すると新規ユーザー名とパスワードを聞かれる(パスワードは入力しても表示されないので注意) (Linuxのシェルで)パッケージのアップデート sudo apt update sudo apt upgrade -y WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う wsl ls -l ubuntu run ls -l WindowsとWSL間のファイル共有 WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに\u0022¥¥wsl$“と入力 Linuxからは，\/mnt\/下にWindows側のドライブがマウントされる(Cドライブは\/mnt\/c\/) ただし，LinuxとWindowsでは互いにファイルシステムが違うため，アクセスに時間がかかる ちょっとした読み書きには支障ないが，Texのコンパイルなど頻繁に多くのファイルを書き換えるような場合には体感できるくらい遅い Linuxで使うファイル(texのソースなど)はLinux側，Windowsで使うファイル(MS Officeのファイルなど)はWindows側に置いておくのが良い わたしはSyncthingというツールを使って，WindowsとLinuxの作業ディレクトリを同期している(両方に同じ内容のファイルが存在することになるので冗長ではある) ちなみにSyncthingは良くできていて，ほかのマシンとファイルを同期するのに便利 分散型なのでサーバは必要ないが，常時起動しているPCが一台あると同期漏れがなく安心 Raspberry Piなどを拠点にするのが良いかも ",
-      "wordCount" : "60",
+      "description": " WSL2？ WSL2のインストール 初期設定 WindowsとWSL間のファイル共有 WSL2？ WSLはLinuxのためのWindows上の仮想環境 LinuxのプログラムをWindowsで利用したいときに便利 LatexのコンパイルはLinuxの方が速いし安定しているのでWSLでやるのがおすすめ WindowsマシンでもMacやLinuxと共通の環境を構築できる 基本的にはコマンド操作だがGUIアプリも動く WSL2のインストール BIOSで仮想化支援機能を有効にする 最初から有効になっていることも多い BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目 Windows 11では，仮想化支援機能が有効になった状態で，PowerShellに以下のように入力するだけでインストールできる。デフォルトでは，Ubuntuがインストールされる。 wsl --install すでにWSLがインストールされている場合は，念のためアップデートしてUbuntuをインストール。 wsl --update wsl install -d Ubuntu 初期設定 インストールしたLinuxディストリビューションを起動する(スタートメニューにUbuntuのショートカットができているはず) 初回起動時は，設定が行われるため数分かかる 起動すると新規ユーザー名とパスワードを聞かれる(パスワードは入力しても表示されないので注意) (Linuxのシェルで)パッケージのアップデート sudo apt update sudo apt upgrade -y Linuxのシェルを起動しなくても，WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを実行することができる wslコマンド，もしくはubuntu runコマンドを使う wsl ls -l ubuntu run ls -l WindowsとWSL間のファイル共有 WindowsからLinuxのファイルへアクセスするには，エクスプローラーのアドレスバーに\u0022¥¥wsl$“と入力 Linuxからは，\/mnt\/下にWindows側のドライブがマウントされる(Cドライブは\/mnt\/c\/) ただし，LinuxとWindowsでは互いにファイルシステムが違うため，アクセスに時間がかかる ちょっとした読み書きには支障ないが，Texのコンパイルなど頻繁に多くのファイルを書き換えるような場合には体感できるくらい遅い Linuxで使うファイル(Texなど)はLinux側，Windowsで使うファイル(MS Officeのファイルなど)はWindows側に置いておくのが良い ",
+      "wordCount" : "56",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -355,7 +355,7 @@
                     href="/public/for-students/email/"
                     class="gdoc-nav__entry"
                   >
-                    Emailを書くときに気をつけたいこと
+                    Emailについての注意
                   </a>
                 </span>
               
@@ -1342,7 +1342,7 @@
 <li>LinuxのプログラムをWindowsで利用したいときに便利
 <ul>
 <li>LatexのコンパイルはLinuxの方が速いし安定しているのでWSLでやるのがおすすめ</li>
-<li>MacやLinuxと共通の環境を構築できる</li>
+<li>WindowsマシンでもMacやLinuxと共通の環境を構築できる</li>
 </ul>
 </li>
 <li>基本的にはコマンド操作だがGUIアプリも動く</li>
@@ -1363,7 +1363,7 @@
 <li>BIOSでの設定方法はメーカーによって異なるが，IntelだとIntel Virtualization Technology(VTx)，AMDだとAMD-VとかSVMとかいう設定項目</li>
 </ul>
 </li>
-<li>Windows 11では，PowerShellで以下のように入力するだけでインストールできる(仮想化支援機能の有効化は必要)。デフォルトでは，Ubuntuがインストールされる。</li>
+<li>Windows 11では，仮想化支援機能が有効になった状態で，PowerShellに以下のように入力するだけでインストールできる。デフォルトでは，Ubuntuがインストールされる。</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-powershell" data-lang="powershell"><span class="line"><span class="cl"><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span>
 </span></span></code></pre></div><ul>
@@ -1392,7 +1392,11 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt update
 </span></span><span class="line"><span class="cl">sudo apt upgrade -y
 </span></span></code></pre></div><ul>
-<li>WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを使うには，wslコマンド，もしくはubuntu runコマンドを使う</li>
+<li>Linuxのシェルを起動しなくても，WindowsのコマンドプロンプトやPowerShellからLinuxのコマンドを実行することができる
+<ul>
+<li>wslコマンド，もしくはubuntu runコマンドを使う</li>
+</ul>
+</li>
 </ul>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">wsl ls -l
 </span></span><span class="line"><span class="cl">ubuntu run ls -l
@@ -1411,17 +1415,7 @@
 <li>ただし，LinuxとWindowsでは互いにファイルシステムが違うため，アクセスに時間がかかる
 <ul>
 <li>ちょっとした読み書きには支障ないが，Texのコンパイルなど頻繁に多くのファイルを書き換えるような場合には体感できるくらい遅い</li>
-<li>Linuxで使うファイル(texのソースなど)はLinux側，Windowsで使うファイル(MS Officeのファイルなど)はWindows側に置いておくのが良い</li>
-</ul>
-</li>
-<li>わたしは<a
-  class="gdoc-markdown__link"
-  href="https://syncthing.net/"
->Syncthing</a>というツールを使って，WindowsとLinuxの作業ディレクトリを同期している(両方に同じ内容のファイルが存在することになるので冗長ではある)
-<ul>
-<li>ちなみにSyncthingは良くできていて，ほかのマシンとファイルを同期するのに便利</li>
-<li>分散型なのでサーバは必要ないが，常時起動しているPCが一台あると同期漏れがなく安心</li>
-<li>Raspberry Piなどを拠点にするのが良いかも</li>
+<li>Linuxで使うファイル(Texなど)はLinux側，Windowsで使うファイル(MS Officeのファイルなど)はWindows側に置いておくのが良い</li>
 </ul>
 </li>
 </ul>

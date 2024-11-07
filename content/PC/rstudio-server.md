@@ -13,7 +13,9 @@ weight: 40
   - サーバー1台に入れておけば，どのマシンからも同じ環境で分析可能
   - 中断した作業を別のマシンでシームレスに再開することができる
   - iPadやスマホでも使うことができる(実際に使うかどうかは別として)
-- RとRStudioはWindowsで使うといろいろな問題が起きるので，WSLにRStudioをインストールして使うのがおすすめ
+- RとRStudioはWindowsにインストールして使うにはいろいろハードルがあるので，WSLにインストールして使うのがおすすめ  
+  →**最近RやRStudioは，Dockerを使うのが簡単で便利。**Dockerについてはそのうち詳しく書こうと思う。
+
 
 ## WSLへのインストール
 
@@ -21,7 +23,6 @@ weight: 40
 
 - 基本的には，[RStudio公式](https://support.rstudio.com/hc/en-us/articles/360049776974-Using-RStudio-Server-in-Windows-WSL2)で解説されている通り
 - [Rで計量政治学入門](https://shohei-doi.github.io/quant_polisci/wsl-rstudio.html)にも解説がある  
-  →こっちの方が良いと思う
 - まず，証明書とレポジトリを追加
 
 ```bash
@@ -69,7 +70,7 @@ sudo apt install libcurl4-openssl-dev libxml2-dev libfontconfig1-dev libharfbuzz
 
 ## 通信を暗号化する
 
-前はいろいろ具体的な方法を書いていたが，わたし自信コンピュータにそれほど詳しいわけではなく，セキュリティ上問題がある気がするので，概要にとどめておくことにした。
+前はいろいろ具体的な方法を書いていたが，わたし自信コンピュータの専門家ではなく，セキュリティ上の問題がある気がするので，概要にとどめておくことにした。
 
 Chromeでは以前localhostでもhttpでアクセスするとブラウザに"このサイトへの接続は安全ではありません"とセキュリティの警告が表示されていて邪魔たったが，現在は表示されないので，LANやインターネット上のほかのマシンからアクセスする場合以外は暗号化する必要はないと思う。
 

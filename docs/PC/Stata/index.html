@@ -9,24 +9,23 @@
 <meta name="referrer" content="no-referrer" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="light dark" />
-<meta name="generator" content="Hugo 0.124.1">
+<meta name="generator" content="Hugo 0.128.2">
 
 
   <meta name="description" content="はじめに StataのLinux版はWSLでも使うことができる。Linux版はCUIで使うこともできるし，GUIも普通に動く。とくにWindows版のStataで困っていなければまったく必要ない。個人的には，シェルやRStudioからStataのコードを実行できるのが便利。Jupyter notebookでも使える。
-Stataのインストール WSLにLinux版Stataをインストールする方法は，公式ページに説明されている通り。 ただし，足りないパッケージがあって起動しないので，libtinfoとlibncursesをインストールしておく。
+Stataのインストール WSLにLinux版Stataをインストールする方法は，公式ページに説明されている通り。 ただし，libtinfoとlibncursesを事前にインストールしておく必要がある。
 sudo apt install -y libtinfo5 libncurses5 上記の公式ページの通りにインストールを実行，終わったら画面に表示される指示にしたがい，(rootのままで)stinitを実行する。
-/usr/local/stata17/stinit 指示にしたがいながらライセンス情報を入力すればOk。
-WSLでもGUIが使える。ただし，libgtk2.0-0というパッケージが足りないのでインストールしておく。
-sudo apt install libgtk2.0-0 Stataを起動するには，/usr/local/stata17/にインストールされた以下のコマンドを実行(わたしのライセンスはMPだが，全部インストールされた)。
+/usr/local/stata17/stinit 指示にしたがってライセンス情報を入力すればOk。
+WSLでもGUIが使える。ただし，GUIを使うにはlibgtk2.0-0というパッケージが必要なのでインストールしておく。
+sudo apt install libgtk2.0-0 Stataを起動するには，/usr/local/stata17/にインストールされた以下のコマンドを実行(ライセンスにかかわらずすべてインストールされるが，ライセンスのあるものしか起動できない)。
 バージョン CUI起動コマンド GUI起動コマンド Stata BE stata xstata Stata SE stata-se xstata-se Stata MP stata-mp xstata-mp /usr/local/stata17にPathを通すか，エイリアスを作成しておくと便利。あと，rootになっているついでに，Stataを起動してupdate allしておくと良い。
-RStudioでStataを使う 個人的にStataのDoファイル・エディタはあまりしっくりこないので，RStudioを使っている。RStudioのターミナルでStataを起動しておいて，エディタの右下にある言語を&quot;Shell&quot;に設定すれば，Ctrl&#43;EnterでDoファイルを1行実行して次の行に移動できる。
-Jupyter notebookでStataを使う PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使うと良いかもしれない。
-Jupyter ntoebookのインストール たぶんAnacondaとかJupyter Labとかフルセットの環境を構築した方が良いと思うが，ここでは必要最低限でいきたい。
+Jupyter notebookでStataを使う PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使いたいという場合は，以下の手順で可能。
+Jupyter notebookのインストール たぶんAnacondaとかJupyter Labとかフルセットの環境を構築した方が良いと思うが，ここでは必要最低限でいきたい。
 もしPythonのパッケージ・マネージャであるpipがインストールされていなければ，インストールする。
 sudo apt install python3-pip pipを使って，Jupyter notebookをインストール。
 pip3 install notebook ~/.local/bin にインストールされるので，Pathが通っていることを確認しておく。
 stata_kernelのインストール 次に，Jupyter notebookでStataを操作するためのカーネルをインストール。
-pip3 install stata_kernel python -m stata_kernel." />
+pip3 install stata_kernel python -m stata_kernel.install (2022.9.7現在) これでインストールされたstata_kernelは，Stata 17で使う場合にグラフ表示に不具合がある。Stata 17で使う場合には，githubからstata_session." />
 
     <title>WSLでStata | Tomokazu NOMURA</title>
 
@@ -53,20 +52,19 @@ pip3 install stata_kernel python -m stata_kernel." />
   />
   <meta property="og:site_name" content="Tomokazu NOMURA" />
   <meta property="og:description" content="はじめに StataのLinux版はWSLでも使うことができる。Linux版はCUIで使うこともできるし，GUIも普通に動く。とくにWindows版のStataで困っていなければまったく必要ない。個人的には，シェルやRStudioからStataのコードを実行できるのが便利。Jupyter notebookでも使える。
-Stataのインストール WSLにLinux版Stataをインストールする方法は，公式ページに説明されている通り。 ただし，足りないパッケージがあって起動しないので，libtinfoとlibncursesをインストールしておく。
+Stataのインストール WSLにLinux版Stataをインストールする方法は，公式ページに説明されている通り。 ただし，libtinfoとlibncursesを事前にインストールしておく必要がある。
 sudo apt install -y libtinfo5 libncurses5 上記の公式ページの通りにインストールを実行，終わったら画面に表示される指示にしたがい，(rootのままで)stinitを実行する。
-/usr/local/stata17/stinit 指示にしたがいながらライセンス情報を入力すればOk。
-WSLでもGUIが使える。ただし，libgtk2.0-0というパッケージが足りないのでインストールしておく。
-sudo apt install libgtk2.0-0 Stataを起動するには，/usr/local/stata17/にインストールされた以下のコマンドを実行(わたしのライセンスはMPだが，全部インストールされた)。
+/usr/local/stata17/stinit 指示にしたがってライセンス情報を入力すればOk。
+WSLでもGUIが使える。ただし，GUIを使うにはlibgtk2.0-0というパッケージが必要なのでインストールしておく。
+sudo apt install libgtk2.0-0 Stataを起動するには，/usr/local/stata17/にインストールされた以下のコマンドを実行(ライセンスにかかわらずすべてインストールされるが，ライセンスのあるものしか起動できない)。
 バージョン CUI起動コマンド GUI起動コマンド Stata BE stata xstata Stata SE stata-se xstata-se Stata MP stata-mp xstata-mp /usr/local/stata17にPathを通すか，エイリアスを作成しておくと便利。あと，rootになっているついでに，Stataを起動してupdate allしておくと良い。
-RStudioでStataを使う 個人的にStataのDoファイル・エディタはあまりしっくりこないので，RStudioを使っている。RStudioのターミナルでStataを起動しておいて，エディタの右下にある言語を&#34;Shell&#34;に設定すれば，Ctrl&#43;EnterでDoファイルを1行実行して次の行に移動できる。
-Jupyter notebookでStataを使う PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使うと良いかもしれない。
-Jupyter ntoebookのインストール たぶんAnacondaとかJupyter Labとかフルセットの環境を構築した方が良いと思うが，ここでは必要最低限でいきたい。
+Jupyter notebookでStataを使う PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使いたいという場合は，以下の手順で可能。
+Jupyter notebookのインストール たぶんAnacondaとかJupyter Labとかフルセットの環境を構築した方が良いと思うが，ここでは必要最低限でいきたい。
 もしPythonのパッケージ・マネージャであるpipがインストールされていなければ，インストールする。
 sudo apt install python3-pip pipを使って，Jupyter notebookをインストール。
 pip3 install notebook ~/.local/bin にインストールされるので，Pathが通っていることを確認しておく。
 stata_kernelのインストール 次に，Jupyter notebookでStataを操作するためのカーネルをインストール。
-pip3 install stata_kernel python -m stata_kernel." />
+pip3 install stata_kernel python -m stata_kernel.install (2022.9.7現在) これでインストールされたstata_kernelは，Stata 17で使う場合にグラフ表示に不具合がある。Stata 17で使う場合には，githubからstata_session." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://tomokazu518.github.io/public/PC/Stata/" />
 
@@ -76,20 +74,19 @@ pip3 install stata_kernel python -m stata_kernel." />
   <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="WSLでStata" />
   <meta name="twitter:description" content="はじめに StataのLinux版はWSLでも使うことができる。Linux版はCUIで使うこともできるし，GUIも普通に動く。とくにWindows版のStataで困っていなければまったく必要ない。個人的には，シェルやRStudioからStataのコードを実行できるのが便利。Jupyter notebookでも使える。
-Stataのインストール WSLにLinux版Stataをインストールする方法は，公式ページに説明されている通り。 ただし，足りないパッケージがあって起動しないので，libtinfoとlibncursesをインストールしておく。
+Stataのインストール WSLにLinux版Stataをインストールする方法は，公式ページに説明されている通り。 ただし，libtinfoとlibncursesを事前にインストールしておく必要がある。
 sudo apt install -y libtinfo5 libncurses5 上記の公式ページの通りにインストールを実行，終わったら画面に表示される指示にしたがい，(rootのままで)stinitを実行する。
-/usr/local/stata17/stinit 指示にしたがいながらライセンス情報を入力すればOk。
-WSLでもGUIが使える。ただし，libgtk2.0-0というパッケージが足りないのでインストールしておく。
-sudo apt install libgtk2.0-0 Stataを起動するには，/usr/local/stata17/にインストールされた以下のコマンドを実行(わたしのライセンスはMPだが，全部インストールされた)。
+/usr/local/stata17/stinit 指示にしたがってライセンス情報を入力すればOk。
+WSLでもGUIが使える。ただし，GUIを使うにはlibgtk2.0-0というパッケージが必要なのでインストールしておく。
+sudo apt install libgtk2.0-0 Stataを起動するには，/usr/local/stata17/にインストールされた以下のコマンドを実行(ライセンスにかかわらずすべてインストールされるが，ライセンスのあるものしか起動できない)。
 バージョン CUI起動コマンド GUI起動コマンド Stata BE stata xstata Stata SE stata-se xstata-se Stata MP stata-mp xstata-mp /usr/local/stata17にPathを通すか，エイリアスを作成しておくと便利。あと，rootになっているついでに，Stataを起動してupdate allしておくと良い。
-RStudioでStataを使う 個人的にStataのDoファイル・エディタはあまりしっくりこないので，RStudioを使っている。RStudioのターミナルでStataを起動しておいて，エディタの右下にある言語を&#34;Shell&#34;に設定すれば，Ctrl&#43;EnterでDoファイルを1行実行して次の行に移動できる。
-Jupyter notebookでStataを使う PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使うと良いかもしれない。
-Jupyter ntoebookのインストール たぶんAnacondaとかJupyter Labとかフルセットの環境を構築した方が良いと思うが，ここでは必要最低限でいきたい。
+Jupyter notebookでStataを使う PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使いたいという場合は，以下の手順で可能。
+Jupyter notebookのインストール たぶんAnacondaとかJupyter Labとかフルセットの環境を構築した方が良いと思うが，ここでは必要最低限でいきたい。
 もしPythonのパッケージ・マネージャであるpipがインストールされていなければ，インストールする。
 sudo apt install python3-pip pipを使って，Jupyter notebookをインストール。
 pip3 install notebook ~/.local/bin にインストールされるので，Pathが通っていることを確認しておく。
 stata_kernelのインストール 次に，Jupyter notebookでStataを操作するためのカーネルをインストール。
-pip3 install stata_kernel python -m stata_kernel." />
+pip3 install stata_kernel python -m stata_kernel.install (2022.9.7現在) これでインストールされたstata_kernelは，Stata 17で使う場合にグラフ表示に不具合がある。Stata 17で使う場合には，githubからstata_session." />
 
 
   <script type="application/ld+json">
@@ -100,8 +97,8 @@ pip3 install stata_kernel python -m stata_kernel." />
       "name": "WSLでStata",
       "url" : "http://tomokazu518.github.io/public/PC/Stata/",
       "headline": "WSLでStata",
-      "description": "はじめに StataのLinux版はWSLでも使うことができる。Linux版はCUIで使うこともできるし，GUIも普通に動く。とくにWindows版のStataで困っていなければまったく必要ない。個人的には，シェルやRStudioからStataのコードを実行できるのが便利。Jupyter notebookでも使える。\nStataのインストール WSLにLinux版Stataをインストールする方法は，公式ページに説明されている通り。 ただし，足りないパッケージがあって起動しないので，libtinfoとlibncursesをインストールしておく。\nsudo apt install -y libtinfo5 libncurses5 上記の公式ページの通りにインストールを実行，終わったら画面に表示される指示にしたがい，(rootのままで)stinitを実行する。\n\/usr\/local\/stata17\/stinit 指示にしたがいながらライセンス情報を入力すればOk。\nWSLでもGUIが使える。ただし，libgtk2.0-0というパッケージが足りないのでインストールしておく。\nsudo apt install libgtk2.0-0 Stataを起動するには，\/usr\/local\/stata17\/にインストールされた以下のコマンドを実行(わたしのライセンスはMPだが，全部インストールされた)。\nバージョン CUI起動コマンド GUI起動コマンド Stata BE stata xstata Stata SE stata-se xstata-se Stata MP stata-mp xstata-mp \/usr\/local\/stata17にPathを通すか，エイリアスを作成しておくと便利。あと，rootになっているついでに，Stataを起動してupdate allしておくと良い。\nRStudioでStataを使う 個人的にStataのDoファイル・エディタはあまりしっくりこないので，RStudioを使っている。RStudioのターミナルでStataを起動しておいて，エディタの右下にある言語を\u0022Shell\u0022に設定すれば，Ctrl\u002bEnterでDoファイルを1行実行して次の行に移動できる。\nJupyter notebookでStataを使う PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使うと良いかもしれない。\nJupyter ntoebookのインストール たぶんAnacondaとかJupyter Labとかフルセットの環境を構築した方が良いと思うが，ここでは必要最低限でいきたい。\nもしPythonのパッケージ・マネージャであるpipがインストールされていなければ，インストールする。\nsudo apt install python3-pip pipを使って，Jupyter notebookをインストール。\npip3 install notebook ~\/.local\/bin にインストールされるので，Pathが通っていることを確認しておく。\nstata_kernelのインストール 次に，Jupyter notebookでStataを操作するためのカーネルをインストール。\npip3 install stata_kernel python -m stata_kernel.",
-      "wordCount" : "89",
+      "description": "はじめに StataのLinux版はWSLでも使うことができる。Linux版はCUIで使うこともできるし，GUIも普通に動く。とくにWindows版のStataで困っていなければまったく必要ない。個人的には，シェルやRStudioからStataのコードを実行できるのが便利。Jupyter notebookでも使える。\nStataのインストール WSLにLinux版Stataをインストールする方法は，公式ページに説明されている通り。 ただし，libtinfoとlibncursesを事前にインストールしておく必要がある。\nsudo apt install -y libtinfo5 libncurses5 上記の公式ページの通りにインストールを実行，終わったら画面に表示される指示にしたがい，(rootのままで)stinitを実行する。\n\/usr\/local\/stata17\/stinit 指示にしたがってライセンス情報を入力すればOk。\nWSLでもGUIが使える。ただし，GUIを使うにはlibgtk2.0-0というパッケージが必要なのでインストールしておく。\nsudo apt install libgtk2.0-0 Stataを起動するには，\/usr\/local\/stata17\/にインストールされた以下のコマンドを実行(ライセンスにかかわらずすべてインストールされるが，ライセンスのあるものしか起動できない)。\nバージョン CUI起動コマンド GUI起動コマンド Stata BE stata xstata Stata SE stata-se xstata-se Stata MP stata-mp xstata-mp \/usr\/local\/stata17にPathを通すか，エイリアスを作成しておくと便利。あと，rootになっているついでに，Stataを起動してupdate allしておくと良い。\nJupyter notebookでStataを使う PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使いたいという場合は，以下の手順で可能。\nJupyter notebookのインストール たぶんAnacondaとかJupyter Labとかフルセットの環境を構築した方が良いと思うが，ここでは必要最低限でいきたい。\nもしPythonのパッケージ・マネージャであるpipがインストールされていなければ，インストールする。\nsudo apt install python3-pip pipを使って，Jupyter notebookをインストール。\npip3 install notebook ~\/.local\/bin にインストールされるので，Pathが通っていることを確認しておく。\nstata_kernelのインストール 次に，Jupyter notebookでStataを操作するためのカーネルをインストール。\npip3 install stata_kernel python -m stata_kernel.install (2022.9.7現在) これでインストールされたstata_kernelは，Stata 17で使う場合にグラフ表示に不具合がある。Stata 17で使う場合には，githubからstata_session.",
+      "wordCount" : "87",
       "inLanguage": "en",
       "isFamilyFriendly": "true",
       "mainEntityOfPage": {
@@ -397,7 +394,7 @@ pip3 install stata_kernel python -m stata_kernel." />
                     href="/public/for-students/email/"
                     class="gdoc-nav__entry"
                   >
-                    Emailを書くときに気をつけたいこと
+                    Emailについての注意
                   </a>
                 </span>
               
@@ -1384,14 +1381,14 @@ pip3 install stata_kernel python -m stata_kernel." />
   class="gdoc-markdown__link"
   href="https://www.stata.com/support/faqs/unix/install-download-on-linux/"
 >公式ページ</a>に説明されている通り。
-ただし，足りないパッケージがあって起動しないので，libtinfoとlibncursesをインストールしておく。</p>
+ただし，libtinfoとlibncursesを事前にインストールしておく必要がある。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install -y libtinfo5 libncurses5
 </span></span></code></pre></div><p>上記の公式ページの通りにインストールを実行，終わったら画面に表示される指示にしたがい，(rootのままで)stinitを実行する。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/usr/local/stata17/stinit
-</span></span></code></pre></div><p>指示にしたがいながらライセンス情報を入力すればOk。</p>
-<p>WSLでもGUIが使える。ただし，libgtk2.0-0というパッケージが足りないのでインストールしておく。</p>
+</span></span></code></pre></div><p>指示にしたがってライセンス情報を入力すればOk。</p>
+<p>WSLでもGUIが使える。ただし，GUIを使うにはlibgtk2.0-0というパッケージが必要なのでインストールしておく。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install libgtk2.0-0
-</span></span></code></pre></div><p>Stataを起動するには，/usr/local/stata17/にインストールされた以下のコマンドを実行(わたしのライセンスはMPだが，全部インストールされた)。</p>
+</span></span></code></pre></div><p>Stataを起動するには，/usr/local/stata17/にインストールされた以下のコマンドを実行(ライセンスにかかわらずすべてインストールされるが，ライセンスのあるものしか起動できない)。</p>
 <div class="table-wrap"> <table>
 <thead>
 <tr>
@@ -1420,16 +1417,6 @@ pip3 install stata_kernel python -m stata_kernel." />
 </table> </div>
 <p>/usr/local/stata17にPathを通すか，エイリアスを作成しておくと便利。あと，rootになっているついでに，Stataを起動してupdate allしておくと良い。</p>
 <div class="flex align-center gdoc-page__anchorwrap">
-    <h2 id="rstudioでstataを使う"
-    >
-        RStudioでStataを使う
-    </h2>
-    <a data-clipboard-text="http://tomokazu518.github.io/public/PC/Stata/#rstudioでstataを使う" class="gdoc-page__anchor clip flex align-center" title="Anchor to: RStudioでStataを使う" aria-label="Anchor to: RStudioでStataを使う" href="#rstudio%e3%81%a7stata%e3%82%92%e4%bd%bf%e3%81%86">
-        <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-    </a>
-</div>
-<p>個人的にStataのDoファイル・エディタはあまりしっくりこないので，RStudioを使っている。RStudioのターミナルでStataを起動しておいて，エディタの右下にある言語を&quot;Shell&quot;に設定すれば，Ctrl+EnterでDoファイルを1行実行して次の行に移動できる。</p>
-<div class="flex align-center gdoc-page__anchorwrap">
     <h2 id="jupyter-notebookでstataを使う"
     >
         Jupyter notebookでStataを使う
@@ -1438,13 +1425,13 @@ pip3 install stata_kernel python -m stata_kernel." />
         <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
     </a>
 </div>
-<p>PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使うと良いかもしれない。</p>
+<p>PythonなどでJupyter notebookを使っているのであれば，StataもJupyter notebookで使いたいという場合は，以下の手順で可能。</p>
 <div class="flex align-center gdoc-page__anchorwrap">
-    <h3 id="jupyter-ntoebookのインストール"
+    <h3 id="jupyter-notebookのインストール"
     >
-        Jupyter ntoebookのインストール
+        Jupyter notebookのインストール
     </h3>
-    <a data-clipboard-text="http://tomokazu518.github.io/public/PC/Stata/#jupyter-ntoebookのインストール" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Jupyter ntoebookのインストール" aria-label="Anchor to: Jupyter ntoebookのインストール" href="#jupyter-ntoebook%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab">
+    <a data-clipboard-text="http://tomokazu518.github.io/public/PC/Stata/#jupyter-notebookのインストール" class="gdoc-page__anchor clip flex align-center" title="Anchor to: Jupyter notebookのインストール" aria-label="Anchor to: Jupyter notebookのインストール" href="#jupyter-notebook%e3%81%ae%e3%82%a4%e3%83%b3%e3%82%b9%e3%83%88%e3%83%bc%e3%83%ab">
         <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
     </a>
 </div>
@@ -1474,21 +1461,22 @@ pip3 install stata_kernel python -m stata_kernel." />
 <p>Jupyter notebookを起動して，kernelをStataに設定すれば使えるはず。</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">jupyter-notebook
 </span></span></code></pre></div><p>自動的にブラウザが開くはずだが，ターミナルによっては開かない場合もあるみたい。その場合は，http://localhost:8888 にアクセスすればOk。</p>
-<div class="flex align-center gdoc-page__anchorwrap">
-    <h3 id="vs-codeで使う"
-    >
-        VS Codeで使う
-    </h3>
-    <a data-clipboard-text="http://tomokazu518.github.io/public/PC/Stata/#vs-codeで使う" class="gdoc-page__anchor clip flex align-center" title="Anchor to: VS Codeで使う" aria-label="Anchor to: VS Codeで使う" href="#vs-code%e3%81%a7%e4%bd%bf%e3%81%86">
-        <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
-    </a>
-</div>
 <p>ブラウザで使うのも良いが，やはりVS Codeが便利。</p>
 <ul>
 <li>python</li>
 <li>jupyter</li>
 </ul>
 <p>のextensionを入れれば快適な分析環境になる。</p>
+<div class="flex align-center gdoc-page__anchorwrap">
+    <h2 id="rstudioでstataを使う"
+    >
+        RStudioでStataを使う
+    </h2>
+    <a data-clipboard-text="http://tomokazu518.github.io/public/PC/Stata/#rstudioでstataを使う" class="gdoc-page__anchor clip flex align-center" title="Anchor to: RStudioでStataを使う" aria-label="Anchor to: RStudioでStataを使う" href="#rstudio%e3%81%a7stata%e3%82%92%e4%bd%bf%e3%81%86">
+        <svg class="gdoc-icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+    </a>
+</div>
+<p>CUIのStataはRStudioで使うこともできる。RStudioのターミナルでStataを起動しておいて，エディタの右下にある言語を&quot;Shell&quot;に設定すれば，Ctrl+EnterでDoファイルを1行実行して次の行に移動できる。</p>
 
   </article>
 
